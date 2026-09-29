@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://andrii-zhmuryk.vercel.app/sitemap.xml
+Sitemap: https://nostradam4ik.github.io/sitemap.xml

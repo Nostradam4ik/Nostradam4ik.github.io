@@ -21,7 +21,7 @@ export const profile = {
   product: 'https://aireviewresponder.dev',
   productName: 'aireviewresponder.dev',
   cvUrl: { fr: '/cv/Andrii-Zhmuryk-CV-FR.pdf', en: '/cv/Andrii-Zhmuryk-CV-EN.pdf' },
-  siteUrl: 'https://andrii-zhmuryk.vercel.app',
+  siteUrl: 'https://nostradam4ik.github.io',
 } as const
 
 /**
