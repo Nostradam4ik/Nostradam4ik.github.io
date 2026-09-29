@@ -210,7 +210,7 @@ export const projects: Project[] = [
     name: 'Fraud Detection Platform',
     category: 'fullstack',
     status: 'personal',
-    repoUrl: 'https://github.com/Nostradam4ik/fraud-detection-ml-orignial',
+    repoUrl: 'https://github.com/Nostradam4ik/fraud-detection-platform',
     stack: ['FastAPI', 'scikit-learn', 'React', 'Terraform', 'Docker', 'PostgreSQL'],
     fr: {
       tagline: 'Détection de fraude bancaire : API de scoring, PWA React, chaîne de sécurité CI',
