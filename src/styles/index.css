@@ -1,0 +1,310 @@
+@import 'tailwindcss';
+
+/*
+ * "Relevé" — a dark instrument-panel palette.
+ *
+ * Four surfaces, one accent, one semantic status, one non-text steel.
+ * Every text pairing below clears WCAG AA; the tightest on the site is
+ * --text-muted on --ink-750 at 5.26:1. If any surface is ever lightened
+ * past #1E242E, the muted tier has to be relit in the same commit.
+ */
+@theme {
+  --color-ink-900: #0b0e12;
+  --color-ink-850: #12161c;
+  --color-ink-800: #171c24;
+  --color-ink-750: #1e242e;
+
+  --color-line-1: #1f242b;
+  --color-line-2: #2c333c;
+  --color-line-3: #39414b;
+  --color-line-ui: #6b7580;
+
+  --color-text-hi: #e8ecf2;
+  --color-text-body: #aeb8c6;
+  --color-text-muted: #8b97a8;
+  --color-steel: #7e8ca0;
+
+  --color-signal: #ffa94d;
+  --color-signal-hi: #ffc178;
+  --color-signal-press: #e08e35;
+  --color-signal-ink: #0b0e12;
+  --color-signal-wash: #1f1a17;
+  --color-signal-edge: #4a3520;
+
+  --color-status-ok: #34d399;
+  --color-status-ok-wash: #102622;
+
+  --font-sans:
+    'Instrument Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --font-serif: 'Newsreader', ui-serif, Georgia, serif;
+
+  /* Line heights are declared in rem so every block lands on a 4px grid. */
+  --text-micro: 0.6875rem;
+  --text-micro--line-height: 1rem;
+  --text-meta: 0.75rem;
+  --text-meta--line-height: 1rem;
+  --text-note: 0.8125rem;
+  --text-note--line-height: 1.25rem;
+  --text-ui: 0.9375rem;
+  --text-ui--line-height: 1.5rem;
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.75rem;
+
+  --ease-enter: cubic-bezier(0.2, 0, 0, 1);
+  --ease-state: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@layer base {
+  :root {
+    --page-max: 1180px;
+    --bar-h: 3rem;
+    --rail-w: 10.5rem;
+    color-scheme: dark;
+  }
+
+  @media (min-width: 768px) {
+    :root {
+      --bar-h: 3.25rem;
+    }
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-ink-900);
+    color: var(--color-text-body);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    /* clip, not hidden: `hidden` on body silently kills position:sticky. */
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    color: var(--color-text-hi);
+    font-weight: 600;
+    text-wrap: balance;
+  }
+
+  h1 {
+    font-size: clamp(2.25rem, 1.55rem + 3.1vw, 4.25rem);
+    line-height: 1.02;
+    letter-spacing: -0.032em;
+    max-width: 18ch;
+  }
+
+  h2 {
+    font-size: clamp(1.75rem, 1.46rem + 1.3vw, 2.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.022em;
+  }
+
+  h3 {
+    font-size: clamp(1.25rem, 1.16rem + 0.4vw, 1.5rem);
+    line-height: 1.75rem;
+    font-weight: 500;
+    letter-spacing: -0.012em;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* The accent is legible on every surface it can land on (8.19:1 worst case). */
+  :focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background-color: #483521;
+    color: var(--color-text-hi);
+  }
+
+  /* Anchors must clear the sticky bar, including footnote targets. */
+  [id] {
+    scroll-margin-top: calc(var(--bar-h) + 1.5rem);
+  }
+
+  /* Numerals line up in true columns wherever they are set in mono. */
+  .font-mono,
+  [class*='font-mono'] {
+    font-variant-numeric: tabular-nums slashed-zero;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Grid and flex children collapse instead of forcing a horizontal scroll. */
+  :where(.grid, .flex) > * {
+    min-width: 0;
+  }
+}
+
+@layer components {
+  /*
+   * Seam grid: there is not one card border in this stylesheet. The 1px gaps
+   * of the grid are the rules, so the page reads as one rack rather than a
+   * stack of floating cards — and a mobile reflow costs no extra CSS.
+   */
+  .seam {
+    display: grid;
+    gap: 1px;
+    background-color: var(--color-line-1);
+    border: 1px solid var(--color-line-1);
+  }
+
+  .seam > * {
+    background-color: var(--color-ink-850);
+  }
+
+  /* Elevation is a lightness step plus a 1px bevel. No box-shadow anywhere. */
+  .panel {
+    background-color: var(--color-ink-850);
+    border: 1px solid var(--color-line-2);
+    border-radius: 6px;
+    box-shadow: inset 0 1px 0 var(--color-line-3);
+  }
+
+  /* Typeset dot leaders, as in a table of contents. */
+  .leader {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+  }
+
+  .leader::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px dotted var(--color-line-2);
+    transform: translateY(-0.25rem);
+  }
+
+  .prose-measure {
+    max-width: 38rem;
+  }
+
+
+  /* Links underline by growing a gradient, so nothing reflows on hover. */
+  .link {
+    color: var(--color-text-hi);
+    background-image: linear-gradient(var(--color-signal), var(--color-signal));
+    background-repeat: no-repeat;
+    background-position: 0 1.15em;
+    background-size: 0% 1px;
+    transition: background-size 160ms var(--ease-state);
+  }
+
+  .link:hover,
+  .link:focus-visible {
+    background-size: 100% 1px;
+  }
+}
+
+@layer utilities {
+  .text-micro {
+    font-size: var(--text-micro);
+    line-height: var(--text-micro--line-height);
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .text-meta {
+    font-size: var(--text-meta);
+    line-height: var(--text-meta--line-height);
+    letter-spacing: 0.04em;
+  }
+}
+
+/* The hairline system disappears on low-contrast panels; lift it there. */
+@media (prefers-contrast: more) {
+  :root {
+    --color-line-1: #3d4650;
+    --color-line-2: #556070;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/*
+ * French recruiters print. A relevé that cannot be printed is not a relevé:
+ * Ctrl+P produces a typeset document, not a screenshot of a dark website.
+ */
+@media print {
+  @page {
+    margin: 16mm 14mm;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #16191c !important;
+    font-size: 10.5pt;
+    line-height: 1.5;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .seam,
+  .panel {
+    background: none !important;
+    border-color: #d4d9de !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+  }
+
+  .seam > * {
+    background: none !important;
+  }
+
+  h1,
+  h2,
+  h3 {
+    color: #16191c !important;
+    break-after: avoid;
+  }
+
+  a {
+    color: #16191c !important;
+    text-decoration: underline;
+  }
+
+  /* Expand link targets — a printed page has no hover. */
+  main a[href^='http']::after {
+    content: ' (' attr(href) ')';
+    font-family: var(--font-mono);
+    font-size: 8.5pt;
+    color: #55606e;
+    word-break: break-all;
+  }
+
+  section {
+    break-inside: avoid-page;
+  }
+}
+

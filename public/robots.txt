@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://andrii-zhmuryk.vercel.app/sitemap.xml

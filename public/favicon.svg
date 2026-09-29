@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#0B0E12"/>
+  <rect x="0.5" y="0.5" width="63" height="63" rx="11.5" fill="none" stroke="#2C333C"/>
+  <text x="32" y="43" font-family="ui-monospace, monospace" font-size="30" font-weight="600"
+        fill="#FFA94D" text-anchor="middle">AZ</text>
+</svg>
