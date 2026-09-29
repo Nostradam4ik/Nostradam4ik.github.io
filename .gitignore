@@ -30,3 +30,5 @@ _source/
 
 # Playwright MCP artifacts
 .playwright-mcp/
+
+.vercel
