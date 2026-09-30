@@ -6,6 +6,7 @@ import { Stats } from '@/sections/Stats'
 import { CaseStudies } from '@/sections/CaseStudies'
 import { Experience } from '@/sections/Experience'
 import { ProjectIndex } from '@/sections/ProjectIndex'
+import { Competences } from '@/sections/Competences'
 import { Skills } from '@/sections/Skills'
 import { Education } from '@/sections/Education'
 import { About } from '@/sections/About'
@@ -70,6 +71,7 @@ export function App() {
         <CaseStudies />
         <Experience />
         <ProjectIndex />
+        <Competences />
         <Skills />
         <Education />
         <About />

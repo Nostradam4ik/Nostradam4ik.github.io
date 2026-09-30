@@ -6,6 +6,7 @@ const SECTION_IDS = [
   'travaux',
   'parcours',
   'projets',
+  'referentiel',
   'competences',
   'formation',
   'apropos',

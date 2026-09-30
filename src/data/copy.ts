@@ -13,6 +13,7 @@ const fr: SiteCopy = {
     { key: 'travaux', label: 'Travaux' },
     { key: 'parcours', label: 'Parcours' },
     { key: 'projets', label: 'Projets' },
+    { key: 'referentiel', label: 'Référentiel BUT' },
     { key: 'competences', label: 'Compétences' },
     { key: 'contact', label: 'Contact' },
   ],
@@ -65,28 +66,35 @@ const fr: SiteCopy = {
       intro:
         "Six projets, un par ligne, avec leur nature réelle : ce qui est un projet universitaire, ce qui est un exercice d'entretien, ce qui est déployé et ce qui ne l'est pas.",
     },
+    referentiel: {
+      key: 'referentiel',
+      eyebrow: '§ 04',
+      heading: 'Référentiel BUT — auto-évaluation',
+      intro:
+        "Les trois compétences approfondies du parcours Réalisation d'applications, au niveau « confirmé ». Pour chacune : ce que le niveau demande, les preuves vérifiables, ce que cela a changé dans ma façon de travailler, et où ce niveau s'arrête.",
+    },
     competences: {
       key: 'competences',
-      eyebrow: '§ 04',
-      heading: 'Compétences',
+      eyebrow: '§ 05',
+      heading: 'Compétences techniques',
       intro:
         "Groupées par usage réel, avec un palier « notions » assumé. Je préfère qu'on me teste sur les premières lignes plutôt que de vous laisser deviner lesquelles je maîtrise vraiment.",
     },
     formation: {
       key: 'formation',
-      eyebrow: '§ 05',
+      eyebrow: '§ 06',
       heading: 'Formation, certificats et langues',
       intro: 'BUT Informatique à l’UPEC, certificats vérifiables en ligne, quatre langues.',
     },
     methode: {
       key: 'methode',
-      eyebrow: '§ 06',
+      eyebrow: '§ 07',
       heading: 'Méthode et transparence',
       intro: 'Ce que vous pouvez vérifier vous-même, et comment.',
     },
     contact: {
       key: 'contact',
-      eyebrow: '§ 07',
+      eyebrow: '§ 08',
       heading: 'Contact',
       intro: 'Adresse en clair, téléphone, LinkedIn, GitHub et le CV en PDF. Aucun formulaire.',
     },
@@ -147,6 +155,10 @@ const fr: SiteCopy = {
     print_page: 'Imprimer',
     last_updated: 'Dernière mise à jour',
     scroll_hint: 'Faites défiler',
+    level_confirmed: 'Niveau confirmé',
+    evidence: 'Les preuves',
+    self_analysis: 'Analyse auto-réflexive',
+    where_it_stops: 'Où ce niveau s’arrête',
   },
   footer:
     'Site conçu, écrit et développé par Andrii Zhmuryk — React, TypeScript, Tailwind CSS, Vite. Aucune mesure d’audience, aucun cookie, aucun script tiers.',
@@ -165,6 +177,7 @@ const en: SiteCopy = {
     { key: 'travaux', label: 'Work' },
     { key: 'parcours', label: 'Experience' },
     { key: 'projets', label: 'Projects' },
+    { key: 'referentiel', label: 'BUT framework' },
     { key: 'competences', label: 'Skills' },
     { key: 'contact', label: 'Contact' },
   ],
@@ -216,28 +229,35 @@ const en: SiteCopy = {
       intro:
         'Six projects, one per row, labelled for what they actually are: university work, interview take-home, deployed or not deployed.',
     },
+    referentiel: {
+      key: 'referentiel',
+      eyebrow: '§ 04',
+      heading: 'BUT competency framework — self-assessment',
+      intro:
+        'The three competencies deepened in the Application Development track, at the "confirmed" level. For each one: what the level asks, checkable evidence, what it changed in how I work, and where that level stops.',
+    },
     competences: {
       key: 'competences',
-      eyebrow: '§ 04',
-      heading: 'Skills',
+      eyebrow: '§ 05',
+      heading: 'Technical skills',
       intro:
         'Grouped by how much I actually use them, with an honest "basics" tier. I would rather be tested on the first lines than have you guess which ones I really know.',
     },
     formation: {
       key: 'formation',
-      eyebrow: '§ 05',
+      eyebrow: '§ 06',
       heading: 'Education, certificates and languages',
       intro: 'A BUT in Computer Science from UPEC, certificates verifiable online, four languages.',
     },
     methode: {
       key: 'methode',
-      eyebrow: '§ 06',
+      eyebrow: '§ 07',
       heading: 'Method and transparency',
       intro: 'What you can verify yourself, and how.',
     },
     contact: {
       key: 'contact',
-      eyebrow: '§ 07',
+      eyebrow: '§ 08',
       heading: 'Contact',
       intro: 'Plain address, phone, LinkedIn, GitHub and the CV as a PDF. No form.',
     },
@@ -297,6 +317,10 @@ const en: SiteCopy = {
     print_page: 'Print',
     last_updated: 'Last updated',
     scroll_hint: 'Scroll',
+    level_confirmed: 'Confirmed level',
+    evidence: 'Evidence',
+    self_analysis: 'Self-reflective analysis',
+    where_it_stops: 'Where this level stops',
   },
   footer:
     'Designed, written and built by Andrii Zhmuryk — React, TypeScript, Tailwind CSS, Vite. No analytics, no cookies, no third-party scripts.',
