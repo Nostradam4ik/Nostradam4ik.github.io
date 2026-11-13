@@ -1,4 +1,5 @@
 import { PageHead } from '@/components/PageHead'
+import { Maquettes } from '@/components/Maquettes'
 import { useI18n } from '@/lib/i18n'
 import { featuredProjects } from '@/data/projects'
 import type { Project } from '@/lib/types'
@@ -87,6 +88,7 @@ export function Travaux() {
           <Work key={project.slug} project={project} />
         ))}
       </div>
+      <Maquettes />
     </>
   )
 }

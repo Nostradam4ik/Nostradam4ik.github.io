@@ -164,6 +164,13 @@ const fr: SiteCopy = {
     diag_choose: 'Choisissez une réponse',
     code_of_site: 'Code de ce site',
     updated: 'Mis à jour le',
+    maquettes_heading: 'Maquettes de sites pour commerces',
+    maquettes_intro:
+      "Deux restaurants inventés, pour montrer ce que je propose à un commerce de quartier : un site lisible sur téléphone, qui présente la carte, les horaires et la réservation. Chaque film dure dix-huit secondes ; la page vivante s'ouvre à côté.",
+    maquettes_note:
+      'Restaurants fictifs : les noms, adresses, numéros et prix sont inventés. Photographies : Unsplash.',
+    maquette_open: 'Ouvrir la page vivante',
+    maquette_video_aria: 'film de dix-huit secondes présentant la maquette',
   },
   footer:
     'Site conçu, écrit et développé par Andrii Zhmuryk — React, TypeScript, Tailwind CSS, Vite. Aucune mesure d’audience, aucun cookie, aucun script tiers.',
@@ -333,6 +340,13 @@ const en: SiteCopy = {
     diag_choose: 'Pick an answer',
     code_of_site: 'Code of this site',
     updated: 'Updated on',
+    maquettes_heading: 'Site mock-ups for local businesses',
+    maquettes_intro:
+      'Two invented restaurants, to show what I offer a neighbourhood business: a site that reads well on a phone and presents the menu, the hours and booking. Each film lasts eighteen seconds; the live page opens alongside.',
+    maquettes_note:
+      'Fictional restaurants: names, addresses, phone numbers and prices are made up. Photography: Unsplash.',
+    maquette_open: 'Open the live page',
+    maquette_video_aria: 'eighteen-second film presenting the mock-up',
   },
   footer:
     'Designed, written and built by Andrii Zhmuryk — React, TypeScript, Tailwind CSS, Vite. No analytics, no cookies, no third-party scripts.',
