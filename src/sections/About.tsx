@@ -18,11 +18,11 @@ export function About() {
       <div className="mx-auto w-full max-w-[var(--page-max)] px-4 sm:px-6 lg:px-8 xl:px-12">
         <div className="lg:grid lg:grid-cols-[10.5rem_minmax(0,1fr)] lg:gap-12">
           <div className="hidden lg:block">
-            <p className="font-mono text-micro text-signal">§ 00</p>
+            <p className="font-mono text-micro text-signal">§ 07</p>
           </div>
 
           <Block>
-            <p className="font-mono text-micro text-signal lg:hidden">§ 00</p>
+            <p className="font-mono text-micro text-signal lg:hidden">§ 07</p>
             <p className="mt-3 font-mono text-micro text-text-muted lg:mt-0">{t.about.eyebrow}</p>
             <h2 id="apropos-heading" className="mt-3">
               {t.about.heading}

@@ -39,7 +39,8 @@ export interface Project {
 
 export interface ExperienceEntry {
   id: string
-  company: string
+  /** A plain name, or a localised label when the name is not public. */
+  company: string | { fr: string; en: string }
   /** Kept identical across languages — a stack is a stack. */
   stack: string[]
   period: { fr: string; en: string }

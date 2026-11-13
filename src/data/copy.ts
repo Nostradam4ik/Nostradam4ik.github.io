@@ -24,13 +24,13 @@ const fr: SiteCopy = {
     headline:
       "Je conçois des applications LLM et RAG, et je les mène jusqu'en production.",
     subline:
-      "Un agent IA de pré-diagnostic livré chez un assureur, testé en conditions réelles. Un SaaS B2B en ligne qui répond aux avis Google en six langues, que j'héberge et administre moi-même. Seize mois en entreprise, dont Groupe ADP et Atos.",
+      "Un agent IA de pré-diagnostic livré chez un assureur, couvert par plus de 5 000 tests automatisés. Un SaaS B2B en ligne qui répond aux avis Google en six langues, que j'héberge et administre moi-même. Seize mois en entreprise, dont Groupe ADP et Atos.",
     ctaPrimary: 'Télécharger le CV',
     ctaSecondary: 'Voir le SaaS en ligne',
     location: 'Paris / Île-de-France · présentiel ou hybride',
   },
   stats: [
-    { value: '16 mois', label: 'en entreprise : Assurance Zen, Atos, Groupe ADP, LISSI' },
+    { value: '16 mois', label: 'en entreprise : secteur assurance, Atos, Groupe ADP, LISSI' },
     { value: '1 SaaS', label: 'en production, hébergé et administré par moi' },
     { value: '5 000+', label: 'tests automatisés sur le projet Leakia' },
     { value: '4ᵉ / 40', label: 'hackathon cybersécurité UPEC' },
@@ -85,12 +85,6 @@ const fr: SiteCopy = {
       eyebrow: '§ 06',
       heading: 'Formation, certificats et langues',
       intro: 'BUT Informatique à l’UPEC, certificats vérifiables en ligne, quatre langues.',
-    },
-    methode: {
-      key: 'methode',
-      eyebrow: '§ 07',
-      heading: 'Méthode et transparence',
-      intro: 'Ce que vous pouvez vérifier vous-même, et comment.',
     },
     contact: {
       key: 'contact',
@@ -155,6 +149,7 @@ const fr: SiteCopy = {
     print_page: 'Imprimer',
     last_updated: 'Dernière mise à jour',
     scroll_hint: 'Faites défiler',
+    menu: 'Menu',
     level_confirmed: 'Niveau confirmé',
     evidence: 'Les preuves',
     self_analysis: 'Analyse auto-réflexive',
@@ -187,13 +182,13 @@ const en: SiteCopy = {
     role: 'AI & Full-Stack Developer — Python, RAG/LLM, FastAPI, React',
     headline: 'I design LLM and RAG applications, and take them all the way to production.',
     subline:
-      'A triage agent shipped at an insurer and tested in real conditions. A live B2B SaaS answering Google reviews in six languages, which I host and administer myself. Sixteen months in industry, including Groupe ADP and Atos.',
+      'A triage agent shipped at an insurer, covered by over 5,000 automated tests. A live B2B SaaS answering Google reviews in six languages, which I host and administer myself. Sixteen months in industry, including Groupe ADP and Atos.',
     ctaPrimary: 'Download CV',
     ctaSecondary: 'See the live SaaS',
     location: 'Paris / Île-de-France · on-site or hybrid',
   },
   stats: [
-    { value: '16 months', label: 'in industry: Assurance Zen, Atos, Groupe ADP, LISSI' },
+    { value: '16 months', label: 'in industry: insurance sector, Atos, Groupe ADP, LISSI' },
     { value: '1 SaaS', label: 'in production, hosted and administered by me' },
     { value: '5,000+', label: 'automated tests on the Leakia project' },
     { value: '4th / 40', label: 'UPEC cybersecurity hackathon' },
@@ -248,12 +243,6 @@ const en: SiteCopy = {
       eyebrow: '§ 06',
       heading: 'Education, certificates and languages',
       intro: 'A BUT in Computer Science from UPEC, certificates verifiable online, four languages.',
-    },
-    methode: {
-      key: 'methode',
-      eyebrow: '§ 07',
-      heading: 'Method and transparency',
-      intro: 'What you can verify yourself, and how.',
     },
     contact: {
       key: 'contact',
@@ -317,6 +306,7 @@ const en: SiteCopy = {
     print_page: 'Print',
     last_updated: 'Last updated',
     scroll_hint: 'Scroll',
+    menu: 'Menu',
     level_confirmed: 'Confirmed level',
     evidence: 'Evidence',
     self_analysis: 'Self-reflective analysis',

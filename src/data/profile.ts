@@ -48,7 +48,10 @@ export const availability = {
 export const experience: ExperienceEntry[] = [
   {
     id: 'zen-leakia',
-    company: 'Assurance Zen Dépannage',
+    company: {
+      fr: 'Entreprise du secteur assurance & assistance (nom confidentiel)',
+      en: 'Insurance & assistance company (name confidential)',
+    },
     stack: [
       'Mistral AI',
       'RAG (Qdrant)',
@@ -70,13 +73,13 @@ export const experience: ExperienceEntry[] = [
         "Projet Leakia, mené en solo : agent IA conversationnel de pré-diagnostic de fuite d'eau pour assureurs, de la conception du protocole métier jusqu'au rapport PDF.",
         'Architecture fiable, « le modèle ne décide rien » : le protocole de 85 questions et le scoring (niveau, origine) sont exécutés par du code ; le LLM rédige, le code décide.',
         'RAG et vision : pipeline RAG sur Qdrant nourri de rapports réels anonymisés (spaCy, RGPD), analyse des photos par un modèle de vision.',
-        'Qualité, testé en conditions réelles : plus de 5 000 tests automatisés, suite Playwright E2E rejouée à chaque livraison, 286 réponses du protocole vérifiées.',
+        'Qualité : plus de 5 000 tests automatisés, suite Playwright E2E rejouée à chaque livraison, 286 réponses du protocole vérifiées.',
       ],
       en: [
         'Leakia project, built solo: a conversational AI agent that pre-diagnoses water leaks for insurers, from designing the business protocol through to the PDF report.',
         'Reliable architecture, "the model decides nothing": the 85-question protocol and the scoring (severity, origin) run as code; the LLM writes, the code decides.',
         'RAG and vision: a RAG pipeline on Qdrant fed with real anonymised reports (spaCy, GDPR), plus photo analysis through a vision model.',
-        'Quality, tested in real conditions: over 5,000 automated tests, a Playwright E2E suite replayed on every release, 286 protocol answers verified.',
+        'Quality: over 5,000 automated tests, a Playwright E2E suite replayed on every release, 286 protocol answers verified.',
       ],
     },
   },

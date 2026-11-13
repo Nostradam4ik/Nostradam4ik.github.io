@@ -1,7 +1,7 @@
 import { useI18n } from '@/lib/i18n'
 import { profile } from '@/data/profile'
 
-const BUILD_DATE = '2026-09-30'
+const BUILD_DATE = '2026-11-13'
 
 export function Footer() {
   const { t, ui } = useI18n()

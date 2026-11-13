@@ -10,10 +10,10 @@ export function Hero() {
   const { t, ui, lang, pick } = useI18n()
   const a = pick(availability)
 
+  // Availability and location already sit above the name; repeating them here
+  // was noise. The table keeps only what the line above does not say.
   const facts = [
-    { label: ui('availability_label'), value: a.status },
     { label: ui('contract_label'), value: a.contract },
-    { label: ui('location_label'), value: a.zone },
     { label: ui('work_right_label'), value: a.workRight },
   ]
 
@@ -96,6 +96,25 @@ export function Hero() {
                 {ui('email_label')}
               </a>
             </div>
+
+            <p className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-ui">
+              <a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="link"
+              >
+                {ui('linkedin')} ↗<span className="sr-only"> ({ui('open_external_aria')})</span>
+              </a>
+              <a
+                href={profile.github}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="link"
+              >
+                {ui('github')} ↗<span className="sr-only"> ({ui('open_external_aria')})</span>
+              </a>
+            </p>
           </div>
         </div>
       </div>

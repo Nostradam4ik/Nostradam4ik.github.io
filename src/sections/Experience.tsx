@@ -18,7 +18,9 @@ export function Experience() {
 
               <div className="mt-2 md:mt-0">
                 <h3 className="text-xl leading-7 font-medium">{pick(role.role)}</h3>
-                <p className="mt-1 text-ui text-signal">{role.company}</p>
+                <p className="mt-1 text-ui text-signal">
+                  {typeof role.company === 'string' ? role.company : pick(role.company)}
+                </p>
 
                 <ul className="prose-measure mt-4 space-y-2.5">
                   {pick(role.bullets).map((b) => (

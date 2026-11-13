@@ -39,7 +39,7 @@ export const projects: Project[] = [
         { label: 'Mené en solo, de la conception au rapport PDF', value: '4 mois' },
       ],
       provenance:
-        "Mission en entreprise chez Assurance Zen Dépannage, juin à septembre 2026. Code propriétaire : je peux le détailler en entretien mais pas le publier.",
+        "Mission en entreprise (secteur assurance et assistance, nom confidentiel), juin à septembre 2026. Code propriétaire : je peux le détailler en entretien mais pas le publier.",
     },
     en: {
       tagline: 'An AI water-leak triage agent for insurers, where the model decides nothing',
@@ -57,7 +57,7 @@ export const projects: Project[] = [
         { label: 'Built solo, from design to PDF report', value: '4 months' },
       ],
       provenance:
-        'Commercial work at Assurance Zen Dépannage, June to September 2026. Proprietary code: I can walk through it in an interview but cannot publish it.',
+        'Commercial work at a company in insurance and assistance (name confidential), June to September 2026. Proprietary code: I can walk through it in an interview but cannot publish it.',
     },
   },
   {
