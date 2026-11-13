@@ -1,72 +1,43 @@
 @import 'tailwindcss';
 
 /*
- * "Relevé" — a dark instrument-panel palette.
+ * Water and ink. A pale blue-grey paper, deep navy ink, and one saturated blue
+ * for the single accent. The only dark surfaces are the diagnostic panel and
+ * the footer, so the weight of the page sits where the decisions are.
  *
- * Four surfaces, one accent, one semantic status, one non-text steel.
- * Every text pairing below clears WCAG AA; the tightest on the site is
- * --text-muted on --ink-750 at 5.26:1. If any surface is ever lightened
- * past #1E242E, the muted tier has to be relit in the same commit.
+ * Contrast, computed rather than guessed (WCAG 2.x):
+ *   ink on paper 14.6   body on paper 10.7   muted on paper 5.0
+ *   water on paper 5.5  water on white 6.1   white on water 6.1
+ *   night-text on night 14.4   night-muted on night 7.6   sky on night 6.7
  */
 @theme {
-  --color-ink-900: #0b0e12;
-  --color-ink-850: #12161c;
-  --color-ink-800: #171c24;
-  --color-ink-750: #1e242e;
+  --color-paper: #eef4f7;
+  --color-panel: #ffffff;
+  --color-ink: #0c2233;
+  --color-body: #25394a;
+  --color-muted: #546b7d;
+  --color-line: #c7d6df;
+  --color-line-ui: #6e8799;
+  --color-water: #0b5bd3;
+  --color-water-deep: #0a3f94;
+  --color-ok: #0a7a4b;
 
-  --color-line-1: #1f242b;
-  --color-line-2: #2c333c;
-  --color-line-3: #39414b;
-  --color-line-ui: #6b7580;
+  --color-night: #0c2233;
+  --color-night-2: #153248;
+  --color-night-line: #2d4b63;
+  --color-night-text: #eaf2f7;
+  --color-night-muted: #9db4c4;
+  --color-sky: #6ea8ff;
 
-  --color-text-hi: #e8ecf2;
-  --color-text-body: #aeb8c6;
-  --color-text-muted: #8b97a8;
-  --color-steel: #7e8ca0;
-
-  --color-signal: #ffa94d;
-  --color-signal-hi: #ffc178;
-  --color-signal-press: #e08e35;
-  --color-signal-ink: #0b0e12;
-  --color-signal-wash: #1f1a17;
-  --color-signal-edge: #4a3520;
-
-  --color-status-ok: #34d399;
-  --color-status-ok-wash: #102622;
-
-  --font-sans:
-    'Instrument Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
-  --font-serif: 'Newsreader', ui-serif, Georgia, serif;
-
-  /* Line heights are declared in rem so every block lands on a 4px grid. */
-  --text-micro: 0.6875rem;
-  --text-micro--line-height: 1rem;
-  --text-meta: 0.75rem;
-  --text-meta--line-height: 1rem;
-  --text-note: 0.8125rem;
-  --text-note--line-height: 1.25rem;
-  --text-ui: 0.9375rem;
-  --text-ui--line-height: 1.5rem;
-  --text-body: 1.0625rem;
-  --text-body--line-height: 1.75rem;
-
-  --ease-enter: cubic-bezier(0.2, 0, 0, 1);
-  --ease-state: cubic-bezier(0.4, 0, 0.2, 1);
+  --font-display:
+    'Bricolage Grotesque', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-text: 'Newsreader', Georgia, 'Times New Roman', serif;
 }
 
 @layer base {
   :root {
-    --page-max: 1180px;
-    --bar-h: 3rem;
-    --rail-w: 10.5rem;
-    color-scheme: dark;
-  }
-
-  @media (min-width: 768px) {
-    :root {
-      --bar-h: 3.25rem;
-    }
+    --bar-h: 4rem;
+    color-scheme: light;
   }
 
   html {
@@ -75,12 +46,11 @@
   }
 
   body {
-    background-color: var(--color-ink-900);
-    color: var(--color-text-body);
-    font-family: var(--font-sans);
-    font-size: var(--text-body);
-    line-height: var(--text-body--line-height);
-    /* clip, not hidden: `hidden` on body silently kills position:sticky. */
+    background-color: var(--color-paper);
+    color: var(--color-body);
+    font-family: var(--font-text);
+    font-size: 1.125rem;
+    line-height: 1.65;
     overflow-x: clip;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -88,57 +58,45 @@
 
   h1,
   h2,
-  h3 {
-    color: var(--color-text-hi);
-    font-weight: 600;
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--color-ink);
     text-wrap: balance;
-  }
-
-  h1 {
-    font-size: clamp(2.25rem, 1.55rem + 3.1vw, 4.25rem);
-    line-height: 1.02;
-    letter-spacing: -0.032em;
-    max-width: 18ch;
-  }
-
-  h2 {
-    font-size: clamp(1.75rem, 1.46rem + 1.3vw, 2.5rem);
-    line-height: 1.1;
-    letter-spacing: -0.022em;
-  }
-
-  h3 {
-    font-size: clamp(1.25rem, 1.16rem + 0.4vw, 1.5rem);
-    line-height: 1.75rem;
-    font-weight: 500;
-    letter-spacing: -0.012em;
   }
 
   p {
     text-wrap: pretty;
   }
 
-  /* The accent is legible on every surface it can land on (8.19:1 worst case). */
+  /* Headings carry the personality: a condensed, heavy cut with tight tracking. */
+  h1,
+  h2 {
+    font-stretch: 90%;
+    letter-spacing: -0.02em;
+  }
+
   :focus-visible {
-    outline: 2px solid var(--color-signal);
-    outline-offset: 2px;
+    outline: 2px solid var(--color-water);
+    outline-offset: 3px;
     border-radius: 2px;
   }
 
-  ::selection {
-    background-color: #483521;
-    color: var(--color-text-hi);
+  .on-night :focus-visible {
+    outline-color: var(--color-sky);
   }
 
-  /* Anchors must clear the sticky bar, including footnote targets. */
+  ::selection {
+    background-color: #bcd4fb;
+    color: var(--color-ink);
+  }
+
   [id] {
     scroll-margin-top: calc(var(--bar-h) + 1.5rem);
   }
 
-  /* Numerals line up in true columns wherever they are set in mono. */
-  .font-mono,
-  [class*='font-mono'] {
-    font-variant-numeric: tabular-nums slashed-zero;
+  main:focus {
+    outline: none;
   }
 
   img {
@@ -146,92 +104,98 @@
     height: auto;
   }
 
-  /* Grid and flex children collapse instead of forcing a horizontal scroll. */
   :where(.grid, .flex) > * {
     min-width: 0;
   }
 }
 
 @layer components {
-  /*
-   * Seam grid: there is not one card border in this stylesheet. The 1px gaps
-   * of the grid are the rules, so the page reads as one rack rather than a
-   * stack of floating cards — and a mobile reflow costs no extra CSS.
-   */
-  .seam {
-    display: grid;
-    gap: 1px;
-    background-color: var(--color-line-1);
-    border: 1px solid var(--color-line-1);
+  .wrap {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 4vw, 3rem);
   }
 
-  .seam > * {
-    background-color: var(--color-ink-850);
+  .measure {
+    max-width: 42rem;
   }
 
-  /* Elevation is a lightness step plus a 1px bevel. No box-shadow anywhere. */
-  .panel {
-    background-color: var(--color-ink-850);
-    border: 1px solid var(--color-line-2);
-    border-radius: 6px;
-    box-shadow: inset 0 1px 0 var(--color-line-3);
+  .ui {
+    font-family: var(--font-display);
   }
 
-  /* Typeset dot leaders, as in a table of contents. */
-  .leader {
-    display: flex;
-    align-items: baseline;
-    gap: 0.75rem;
-  }
-
-  .leader::after {
-    content: '';
-    flex: 1;
-    border-bottom: 1px dotted var(--color-line-2);
-    transform: translateY(-0.25rem);
-  }
-
-  .prose-measure {
-    max-width: 38rem;
-  }
-
-
-  /* Links underline by growing a gradient, so nothing reflows on hover. */
+  /* Underlined text links: the colour says "link", the underline says it again
+     for anyone who cannot tell the colours apart. */
   .link {
-    color: var(--color-text-hi);
-    background-image: linear-gradient(var(--color-signal), var(--color-signal));
-    background-repeat: no-repeat;
-    background-position: 0 1.15em;
-    background-size: 0% 1px;
-    transition: background-size 160ms var(--ease-state);
+    color: var(--color-water);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
+    transition: text-decoration-thickness 120ms ease;
   }
 
-  .link:hover,
-  .link:focus-visible {
-    background-size: 100% 1px;
+  .link:hover {
+    color: var(--color-water-deep);
+    text-decoration-thickness: 2px;
+  }
+
+  .on-night .link {
+    color: var(--color-sky);
+  }
+
+  .on-night .link:hover {
+    color: #ffffff;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3rem;
+    padding: 0 1.25rem;
+    border-radius: 4px;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1;
+    transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+  }
+
+  .btn-solid {
+    background-color: var(--color-water);
+    color: #ffffff;
+  }
+
+  .btn-solid:hover {
+    background-color: var(--color-water-deep);
+  }
+
+  .btn-line {
+    border: 1.5px solid var(--color-line-ui);
+    color: var(--color-ink);
+  }
+
+  .btn-line:hover {
+    border-color: var(--color-ink);
+    background-color: #ffffff;
+  }
+
+  /*
+   * The one animation on the site, and it answers an action: when you pick an
+   * answer in the diagnostic, the branch to it is drawn. Nothing is hidden
+   * until you scroll, nothing waits for a timer.
+   */
+  .draw {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: draw 520ms cubic-bezier(0.2, 0, 0, 1) forwards;
   }
 }
 
-@layer utilities {
-  .text-micro {
-    font-size: var(--text-micro);
-    line-height: var(--text-micro--line-height);
-    letter-spacing: 0.09em;
-    text-transform: uppercase;
-  }
-
-  .text-meta {
-    font-size: var(--text-meta);
-    line-height: var(--text-meta--line-height);
-    letter-spacing: 0.04em;
-  }
-}
-
-/* The hairline system disappears on low-contrast panels; lift it there. */
-@media (prefers-contrast: more) {
-  :root {
-    --color-line-1: #3d4650;
-    --color-line-2: #556070;
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
   }
 }
 
@@ -240,19 +204,24 @@
     scroll-behavior: auto;
   }
 
+  .draw {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 }
 
-/*
- * French recruiters print. A relevé that cannot be printed is not a relevé:
- * Ctrl+P produces a typeset document, not a screenshot of a dark website.
- */
+@media (prefers-contrast: more) {
+  :root {
+    --color-line: #8fa6b5;
+  }
+}
+
 @media print {
   @page {
     margin: 16mm 14mm;
@@ -263,28 +232,21 @@
     background: #fff !important;
     color: #16191c !important;
     font-size: 10.5pt;
-    line-height: 1.5;
   }
 
   .no-print {
     display: none !important;
   }
 
-  .seam,
-  .panel {
-    background: none !important;
-    border-color: #d4d9de !important;
-    box-shadow: none !important;
-    break-inside: avoid;
-  }
-
-  .seam > * {
-    background: none !important;
+  .on-night {
+    background: #fff !important;
+    color: #16191c !important;
   }
 
   h1,
   h2,
-  h3 {
+  h3,
+  h4 {
     color: #16191c !important;
     break-after: avoid;
   }
@@ -294,17 +256,10 @@
     text-decoration: underline;
   }
 
-  /* Expand link targets — a printed page has no hover. */
   main a[href^='http']::after {
     content: ' (' attr(href) ')';
-    font-family: var(--font-mono);
     font-size: 8.5pt;
     color: #55606e;
     word-break: break-all;
   }
-
-  section {
-    break-inside: avoid-page;
-  }
 }
-

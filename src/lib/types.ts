@@ -79,8 +79,10 @@ export interface LanguageSkill {
   proficiency: number
 }
 
+export type RoutePath = '/' | '/travaux' | '/parcours' | '/referentiel' | '/profil'
+
 export interface NavItem {
-  key: string
+  path: RoutePath
   label: string
 }
 
@@ -89,11 +91,27 @@ export interface StatItem {
   label: string
 }
 
-export interface SectionCopy {
-  key: string
-  eyebrow: string
-  heading: string
+export interface PageCopy {
+  title: string
   intro: string
+}
+
+/** href tokens (@cv, @saas, @github, @repo) are resolved at render time. */
+export interface DiagLink {
+  label: string
+  note: string
+  href: string
+  external?: boolean
+  download?: boolean
+}
+
+export type DiagAudience = 'recruiter' | 'jury' | 'dev'
+
+export interface DiagOption {
+  id: DiagAudience
+  label: string
+  heading: string
+  links: DiagLink[]
 }
 
 export interface SiteCopy {
@@ -110,22 +128,25 @@ export interface SiteCopy {
     role: string
     headline: string
     subline: string
+    terms: string
     ctaPrimary: string
     ctaSecondary: string
-    location: string
   }
   stats: StatItem[]
   about: {
-    eyebrow: string
     heading: string
     paragraphs: string[]
   }
-  sections: Record<string, SectionCopy>
-  experienceIntro: string
+  pages: Record<'travaux' | 'parcours' | 'referentiel' | 'profil', PageCopy>
+  diag: {
+    question: string
+    hint: string
+    explain: string
+    options: DiagOption[]
+  }
   contact: {
     heading: string
     body: string
-    cta: string
     note: string
   }
   ui: Record<string, string>

@@ -10,95 +10,97 @@ const fr: SiteCopy = {
       'Applications LLM et RAG mises en production. Un SaaS B2B en ligne, un agent IA livré chez un assureur, 16 mois en entreprise. Disponible en CDI ou CDD à Paris.',
   },
   nav: [
-    { key: 'travaux', label: 'Travaux' },
-    { key: 'parcours', label: 'Parcours' },
-    { key: 'projets', label: 'Projets' },
-    { key: 'referentiel', label: 'Référentiel BUT' },
-    { key: 'competences', label: 'Compétences' },
-    { key: 'contact', label: 'Contact' },
+    { path: '/travaux', label: 'Travaux' },
+    { path: '/parcours', label: 'Parcours' },
+    { path: '/referentiel', label: 'Référentiel BUT' },
+    { path: '/profil', label: 'Profil' },
   ],
   hero: {
-    availability: 'Disponible immédiatement · CDI ou CDD',
+    availability: 'Disponible immédiatement',
     name: 'Andrii Zhmuryk',
-    role: 'Développeur IA & Fullstack — Python, RAG/LLM, FastAPI, React',
-    headline:
-      "Je conçois des applications LLM et RAG, et je les mène jusqu'en production.",
+    role: 'Développeur IA et fullstack',
+    headline: "Je conçois des applications LLM et RAG, et je les mène jusqu'en production.",
     subline:
-      "Un agent IA de pré-diagnostic livré chez un assureur, couvert par plus de 5 000 tests automatisés. Un SaaS B2B en ligne qui répond aux avis Google en six langues, que j'héberge et administre moi-même. Seize mois en entreprise, dont Groupe ADP et Atos.",
+      "Un agent IA livré chez un assureur, couvert par plus de 5 000 tests automatisés. Un SaaS en ligne que j'héberge moi-même.",
+    terms: 'CDI ou CDD, Paris et Île-de-France, autorisé à travailler en France sans restriction.',
     ctaPrimary: 'Télécharger le CV',
     ctaSecondary: 'Voir le SaaS en ligne',
-    location: 'Paris / Île-de-France · présentiel ou hybride',
   },
   stats: [
-    { value: '16 mois', label: 'en entreprise : secteur assurance, Atos, Groupe ADP, LISSI' },
-    { value: '1 SaaS', label: 'en production, hébergé et administré par moi' },
-    { value: '5 000+', label: 'tests automatisés sur le projet Leakia' },
-    { value: '4ᵉ / 40', label: 'hackathon cybersécurité UPEC' },
+    { value: '16 mois', label: 'en entreprise' },
+    { value: '1 SaaS', label: 'en production, que j’administre' },
+    { value: '5 000+', label: 'tests automatisés sur Leakia' },
+    { value: '4ᵉ sur 40', label: 'hackathon cybersécurité UPEC' },
   ],
   about: {
-    eyebrow: 'Ce que je cherche',
     heading: "Une équipe où le travail va jusqu'à la mise en ligne",
     paragraphs: [
       "Je travaille sur des backends Python et sur ce qui entoure un modèle de langage : le contrat de sortie, la validation, le coût par appel, le comportement quand le fournisseur tombe. C'est la partie que presque personne ne montre, et c'est celle qui décide si un produit tient en production ou pas.",
-      "Sur Leakia, j'en ai tiré une règle que je garde : le modèle ne décide rien. Le protocole métier et le scoring sont exécutés par du code, le LLM comprend et rédige. C'est moins spectaculaire qu'un agent autonome, et c'est ce qui rend le résultat vérifiable — donc défendable devant un assureur.",
-      "Je cherche un poste de développeur IA ou fullstack en CDI ou en CDD, à Paris ou en Île-de-France. Je suis disponible immédiatement et autorisé à travailler en France sans restriction. Je viens avec seize mois d'entreprise : je sais entrer dans un dépôt existant, poser les bonnes questions la première semaine et livrer quelque chose d'utilisable avant la fin du premier mois.",
+      "Sur Leakia, j'en ai tiré une règle que je garde : le modèle ne décide rien. Le protocole métier et le scoring sont exécutés par du code, le LLM comprend et rédige. C'est moins spectaculaire qu'un agent autonome, et c'est ce qui rend le résultat vérifiable, donc défendable devant un assureur.",
+      "Je cherche un poste de développeur IA ou fullstack en CDI ou en CDD, à Paris ou en Île-de-France. Je suis disponible immédiatement. Je viens avec seize mois d'entreprise : je sais entrer dans un dépôt existant, poser les bonnes questions la première semaine et livrer quelque chose d'utilisable avant la fin du premier mois.",
     ],
   },
-  sections: {
+  pages: {
     travaux: {
-      key: 'travaux',
-      eyebrow: '§ 01',
-      heading: 'Deux travaux en détail',
+      title: 'Deux travaux en détail',
       intro:
-        "Un agent IA livré en entreprise et un SaaS que je fais tourner. Pour chacun : le problème réel, l'architecture, et ce que j'ai choisi de ne pas faire.",
+        "Un agent IA livré en entreprise et un SaaS que je fais tourner. Pour chacun : le problème, ce que j'ai construit, et ce qui se vérifie.",
     },
     parcours: {
-      key: 'parcours',
-      eyebrow: '§ 02',
-      heading: 'Parcours',
-      intro:
-        'Quatre expériences, les dates au mois près. Tout est recoupable avec mon profil LinkedIn : c’est fait pour.',
-    },
-    projets: {
-      key: 'projets',
-      eyebrow: '§ 03',
-      heading: 'Autres projets',
-      intro:
-        "Six projets, un par ligne, avec leur nature réelle : ce qui est un projet universitaire, ce qui est un exercice d'entretien, ce qui est déployé et ce qui ne l'est pas.",
+      title: 'Parcours',
+      intro: 'Quatre expériences en entreprise et six projets, avec leur nature réelle.',
     },
     referentiel: {
-      key: 'referentiel',
-      eyebrow: '§ 04',
-      heading: 'Référentiel BUT — auto-évaluation',
+      title: 'Référentiel BUT : auto-évaluation',
       intro:
-        "Les trois compétences approfondies du parcours Réalisation d'applications, au niveau « confirmé ». Pour chacune : ce que le niveau demande, les preuves vérifiables, ce que cela a changé dans ma façon de travailler, et où ce niveau s'arrête.",
+        "Les trois compétences approfondies du parcours Réalisation d'applications, au niveau « confirmé ». Pour chacune : ce que le niveau demande, les preuves, ce que cela a changé dans ma façon de travailler, et où il s'arrête.",
     },
-    competences: {
-      key: 'competences',
-      eyebrow: '§ 05',
-      heading: 'Compétences techniques',
-      intro:
-        "Groupées par usage réel, avec un palier « notions » assumé. Je préfère qu'on me teste sur les premières lignes plutôt que de vous laisser deviner lesquelles je maîtrise vraiment.",
-    },
-    formation: {
-      key: 'formation',
-      eyebrow: '§ 06',
-      heading: 'Formation, certificats et langues',
-      intro: 'BUT Informatique à l’UPEC, certificats vérifiables en ligne, quatre langues.',
-    },
-    contact: {
-      key: 'contact',
-      eyebrow: '§ 08',
-      heading: 'Contact',
-      intro: 'Adresse en clair, téléphone, LinkedIn, GitHub et le CV en PDF. Aucun formulaire.',
+    profil: {
+      title: 'Profil',
+      intro: '',
     },
   },
-  experienceIntro:
-    'Quatre expériences, les dates au mois près, toutes recoupables avec mon profil LinkedIn.',
+  diag: {
+    question: 'Vous êtes…',
+    hint: 'Choisissez une réponse : le chemin le plus court s’affiche ici.',
+    explain:
+      "Votre choix est traité par une table de décision de trois lignes, écrite en code. Aucun modèle de langage ne répond ici : c'est le principe de Leakia.",
+    options: [
+      {
+        id: 'recruiter',
+        label: 'Recruteur ou recruteuse',
+        heading: "L'essentiel en deux minutes",
+        links: [
+          { label: 'Le CV en PDF', note: 'Une page, en français', href: '@cv', download: true },
+          { label: 'AI Review Responder', note: 'Un produit en ligne, avec abonnements Stripe', href: '@saas', external: true },
+          { label: 'Leakia', note: "L'agent IA livré chez un assureur", href: '#/travaux' },
+        ],
+      },
+      {
+        id: 'jury',
+        label: "Membre d'un jury",
+        heading: 'Ce qui répond au référentiel',
+        links: [
+          { label: 'Les trois compétences', note: 'Avec les preuves et les limites', href: '#/referentiel' },
+          { label: 'Leakia', note: 'Le projet du stage, expliqué', href: '#/travaux' },
+          { label: 'Parcours et projets', note: 'Quatre expériences, six projets', href: '#/parcours' },
+        ],
+      },
+      {
+        id: 'dev',
+        label: 'Développeur ou développeuse',
+        heading: 'Le code et les choix',
+        links: [
+          { label: 'Les dépôts publics', note: 'Sur GitHub', href: '@github', external: true },
+          { label: "L'architecture de Leakia", note: 'Pourquoi le modèle ne décide rien', href: '#/travaux' },
+          { label: 'Le code de ce site', note: 'Publié par une action GitHub', href: '@repo', external: true },
+        ],
+      },
+    ],
+  },
   contact: {
     heading: 'Écrivez-moi directement',
-    body: "Pas de formulaire : mon adresse est ci-dessous, en clair. Une ligne sur votre produit et sur ce que vous cherchez suffit — je réponds sous 24 heures. Si vous préférez vérifier avant d'écrire, le CV est en PDF et les dépôts sont ouverts.",
-    cta: 'andrijzmurik@gmail.com',
+    body: 'Mon adresse est en clair, sans formulaire. Une ligne sur votre produit suffit, je réponds sous 24 heures.',
     note: 'Aucune donnée n’est collectée sur ce site : ni formulaire, ni mesure d’audience, ni cookie.',
   },
   ui: {
@@ -154,6 +156,14 @@ const fr: SiteCopy = {
     evidence: 'Les preuves',
     self_analysis: 'Analyse auto-réflexive',
     where_it_stops: 'Où ce niveau s’arrête',
+    home_aria: 'Accueil',
+    experiences_heading: 'Expériences',
+    projects_heading: 'Projets',
+    skills_heading: 'Compétences techniques',
+    tabs_aria: 'Les trois compétences',
+    diag_choose: 'Choisissez une réponse',
+    code_of_site: 'Code de ce site',
+    updated: 'Mis à jour le',
   },
   footer:
     'Site conçu, écrit et développé par Andrii Zhmuryk — React, TypeScript, Tailwind CSS, Vite. Aucune mesure d’audience, aucun cookie, aucun script tiers.',
@@ -169,93 +179,97 @@ const en: SiteCopy = {
       'LLM and RAG applications taken to production. A live B2B SaaS, an AI agent shipped at an insurer, 16 months in industry. Available now in Paris.',
   },
   nav: [
-    { key: 'travaux', label: 'Work' },
-    { key: 'parcours', label: 'Experience' },
-    { key: 'projets', label: 'Projects' },
-    { key: 'referentiel', label: 'BUT framework' },
-    { key: 'competences', label: 'Skills' },
-    { key: 'contact', label: 'Contact' },
+    { path: '/travaux', label: 'Work' },
+    { path: '/parcours', label: 'Experience' },
+    { path: '/referentiel', label: 'BUT framework' },
+    { path: '/profil', label: 'Profile' },
   ],
   hero: {
-    availability: 'Available immediately · permanent or fixed-term',
+    availability: 'Available immediately',
     name: 'Andrii Zhmuryk',
-    role: 'AI & Full-Stack Developer — Python, RAG/LLM, FastAPI, React',
+    role: 'AI and full-stack developer',
     headline: 'I design LLM and RAG applications, and take them all the way to production.',
     subline:
-      'A triage agent shipped at an insurer, covered by over 5,000 automated tests. A live B2B SaaS answering Google reviews in six languages, which I host and administer myself. Sixteen months in industry, including Groupe ADP and Atos.',
+      'An AI agent shipped at an insurer, covered by over 5,000 automated tests. A live SaaS that I host myself.',
+    terms: 'Permanent or fixed-term, Paris and Île-de-France, authorised to work in France without restriction.',
     ctaPrimary: 'Download CV',
     ctaSecondary: 'See the live SaaS',
-    location: 'Paris / Île-de-France · on-site or hybrid',
   },
   stats: [
-    { value: '16 months', label: 'in industry: insurance sector, Atos, Groupe ADP, LISSI' },
-    { value: '1 SaaS', label: 'in production, hosted and administered by me' },
-    { value: '5,000+', label: 'automated tests on the Leakia project' },
-    { value: '4th / 40', label: 'UPEC cybersecurity hackathon' },
+    { value: '16 months', label: 'in industry' },
+    { value: '1 SaaS', label: 'in production, run by me' },
+    { value: '5,000+', label: 'automated tests on Leakia' },
+    { value: '4th of 40', label: 'UPEC cybersecurity hackathon' },
   ],
   about: {
-    eyebrow: 'What I am looking for',
     heading: 'A team where the work goes all the way to shipping',
     paragraphs: [
       'I work on Python back ends and on everything that surrounds a language model: the output contract, validation, cost per call, behaviour when the provider goes down. It is the part almost nobody shows, and it is the part that decides whether a product survives production.',
-      'Leakia gave me a rule I have kept: the model decides nothing. The business protocol and the scoring run as code; the LLM understands and writes. That is less spectacular than an autonomous agent, and it is what makes the output checkable — therefore defensible in front of an insurer.',
-      'I am looking for an AI or full-stack developer role on a permanent or fixed-term contract, in Paris or Île-de-France. I am available immediately and authorised to work in France without restriction. I bring sixteen months of industry experience: I know how to get into an existing codebase, ask the right questions in week one, and ship something usable before the first month is out.',
+      'Leakia gave me a rule I have kept: the model decides nothing. The business protocol and the scoring run as code; the LLM understands and writes. That is less spectacular than an autonomous agent, and it is what makes the output checkable, therefore defensible in front of an insurer.',
+      'I am looking for an AI or full-stack developer role on a permanent or fixed-term contract, in Paris or Île-de-France. I am available immediately. I bring sixteen months of industry experience: I know how to get into an existing codebase, ask the right questions in week one, and ship something usable before the first month is out.',
     ],
   },
-  sections: {
+  pages: {
     travaux: {
-      key: 'travaux',
-      eyebrow: '§ 01',
-      heading: 'Two pieces of work in detail',
+      title: 'Two pieces of work in detail',
       intro:
-        'An AI agent shipped at a company, and a SaaS I run myself. For each: the real problem, the architecture, and what I chose not to build.',
+        'An AI agent shipped at a company, and a SaaS I run myself. For each: the problem, what I built, and what can be checked.',
     },
     parcours: {
-      key: 'parcours',
-      eyebrow: '§ 02',
-      heading: 'Experience',
-      intro:
-        'Four roles, dated to the month. All of it cross-checks against my LinkedIn profile, which is the point.',
-    },
-    projets: {
-      key: 'projets',
-      eyebrow: '§ 03',
-      heading: 'Other projects',
-      intro:
-        'Six projects, one per row, labelled for what they actually are: university work, interview take-home, deployed or not deployed.',
+      title: 'Experience',
+      intro: 'Four roles in industry and six projects, labelled for what they actually are.',
     },
     referentiel: {
-      key: 'referentiel',
-      eyebrow: '§ 04',
-      heading: 'BUT competency framework — self-assessment',
+      title: 'BUT framework: self-assessment',
       intro:
-        'The three competencies deepened in the Application Development track, at the "confirmed" level. For each one: what the level asks, checkable evidence, what it changed in how I work, and where that level stops.',
+        'The three competencies deepened in the Application Development track, at the "confirmed" level. For each one: what the level asks, the evidence, what it changed in how I work, and where it stops.',
     },
-    competences: {
-      key: 'competences',
-      eyebrow: '§ 05',
-      heading: 'Technical skills',
-      intro:
-        'Grouped by how much I actually use them, with an honest "basics" tier. I would rather be tested on the first lines than have you guess which ones I really know.',
-    },
-    formation: {
-      key: 'formation',
-      eyebrow: '§ 06',
-      heading: 'Education, certificates and languages',
-      intro: 'A BUT in Computer Science from UPEC, certificates verifiable online, four languages.',
-    },
-    contact: {
-      key: 'contact',
-      eyebrow: '§ 08',
-      heading: 'Contact',
-      intro: 'Plain address, phone, LinkedIn, GitHub and the CV as a PDF. No form.',
+    profil: {
+      title: 'Profile',
+      intro: '',
     },
   },
-  experienceIntro: 'Four roles, dated to the month, all cross-checkable against my LinkedIn profile.',
+  diag: {
+    question: 'You are…',
+    hint: 'Pick an answer: the shortest path appears here.',
+    explain:
+      'Your choice is handled by a three-row decision table written in code. No language model answers here: that is the principle behind Leakia.',
+    options: [
+      {
+        id: 'recruiter',
+        label: 'A recruiter',
+        heading: 'The essentials in two minutes',
+        links: [
+          { label: 'The CV as a PDF', note: 'One page, in English', href: '@cv', download: true },
+          { label: 'AI Review Responder', note: 'A live product with Stripe subscriptions', href: '@saas', external: true },
+          { label: 'Leakia', note: 'The AI agent shipped at an insurer', href: '#/travaux' },
+        ],
+      },
+      {
+        id: 'jury',
+        label: 'A jury member',
+        heading: 'What answers the framework',
+        links: [
+          { label: 'The three competencies', note: 'With evidence and limits', href: '#/referentiel' },
+          { label: 'Leakia', note: 'The internship project, explained', href: '#/travaux' },
+          { label: 'Experience and projects', note: 'Four roles, six projects', href: '#/parcours' },
+        ],
+      },
+      {
+        id: 'dev',
+        label: 'A developer',
+        heading: 'The code and the choices',
+        links: [
+          { label: 'The public repositories', note: 'On GitHub', href: '@github', external: true },
+          { label: 'The architecture of Leakia', note: 'Why the model decides nothing', href: '#/travaux' },
+          { label: 'The code of this site', note: 'Published by a GitHub action', href: '@repo', external: true },
+        ],
+      },
+    ],
+  },
   contact: {
     heading: 'Write to me directly',
-    body: 'No form: my address is below, in plain text. One line about your product and what you are looking for is enough — I reply within 24 hours. If you would rather check before writing, the CV is a PDF and the repositories are open.',
-    cta: 'andrijzmurik@gmail.com',
+    body: 'My address is in plain text, no form. One line about your product is enough, and I reply within 24 hours.',
     note: 'No data is collected on this site: no form, no analytics, no cookies.',
   },
   ui: {
@@ -311,6 +325,14 @@ const en: SiteCopy = {
     evidence: 'Evidence',
     self_analysis: 'Self-reflective analysis',
     where_it_stops: 'Where this level stops',
+    home_aria: 'Home',
+    experiences_heading: 'Experience',
+    projects_heading: 'Projects',
+    skills_heading: 'Technical skills',
+    tabs_aria: 'The three competencies',
+    diag_choose: 'Pick an answer',
+    code_of_site: 'Code of this site',
+    updated: 'Updated on',
   },
   footer:
     'Designed, written and built by Andrii Zhmuryk — React, TypeScript, Tailwind CSS, Vite. No analytics, no cookies, no third-party scripts.',

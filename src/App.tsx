@@ -1,18 +1,23 @@
-import { useEffect } from 'react'
-import { StatusBar } from '@/components/StatusBar'
+import { useEffect, useRef } from 'react'
 import { Footer } from '@/components/Footer'
-import { Hero } from '@/sections/Hero'
-import { Stats } from '@/sections/Stats'
-import { CaseStudies } from '@/sections/CaseStudies'
-import { Experience } from '@/sections/Experience'
-import { ProjectIndex } from '@/sections/ProjectIndex'
-import { Competences } from '@/sections/Competences'
-import { Skills } from '@/sections/Skills'
-import { Education } from '@/sections/Education'
-import { About } from '@/sections/About'
-import { Contact } from '@/sections/Contact'
+import { Header } from '@/components/Header'
+import { Home } from '@/pages/Home'
+import { Parcours } from '@/pages/Parcours'
+import { Profil } from '@/pages/Profil'
+import { Referentiel } from '@/pages/Referentiel'
+import { Travaux } from '@/pages/Travaux'
 import { useI18n } from '@/lib/i18n'
+import { useLocation } from '@/lib/router'
 import { profile } from '@/data/profile'
+import type { RoutePath } from '@/lib/types'
+
+const PAGES: Record<RoutePath, () => React.JSX.Element> = {
+  '/': Home,
+  '/travaux': Travaux,
+  '/parcours': Parcours,
+  '/referentiel': Referentiel,
+  '/profil': Profil,
+}
 
 function setMeta(selector: string, content: string) {
   const el = document.head.querySelector<HTMLMetaElement>(selector)
@@ -20,67 +25,77 @@ function setMeta(selector: string, content: string) {
 }
 
 /**
- * The page is a single document with no router, so the head is kept in sync
- * here rather than by a routing layer. index.html ships the French metadata,
- * which is what a crawler without JavaScript sees.
+ * The head is kept in sync here, since there is one document and no server.
+ * index.html ships the French home metadata, which is what a crawler without
+ * JavaScript sees.
  */
-function useDocumentMeta() {
+function useDocumentMeta(path: RoutePath) {
   const { t, lang } = useI18n()
 
   useEffect(() => {
-    document.title = t.meta.title
+    const page = path === '/' ? null : t.pages[path.slice(1) as keyof typeof t.pages]
+    document.title = page ? `${page.title} — ${profile.name}` : t.meta.title
     setMeta('meta[name="description"]', t.meta.description)
     setMeta('meta[property="og:title"]', t.meta.ogTitle)
     setMeta('meta[property="og:description"]', t.meta.ogDescription)
     setMeta('meta[property="og:locale"]', lang === 'fr' ? 'fr_FR' : 'en_GB')
-  }, [t, lang])
+  }, [t, lang, path])
 }
 
 /**
- * A hash in the URL arrives before React has rendered the target, so the
- * browser's own jump finds nothing. Repeat it once after the first paint.
+ * A hash route change leaves the browser where it was. Move to the top of the
+ * new page and put focus on its title, so a keyboard or screen-reader user
+ * lands at the start of what they asked for. The first load is left alone.
  */
-function useInitialHashScroll() {
+function useRouteEffects(path: RoutePath, anchor?: string) {
+  const first = useRef(true)
+
   useEffect(() => {
-    const id = window.location.hash.slice(1)
-    if (!id) return
-    const target = document.getElementById(id)
-    if (target) target.scrollIntoView({ behavior: 'instant', block: 'start' })
-  }, [])
+    if (anchor) {
+      document.getElementById(anchor)?.scrollIntoView({ behavior: 'instant', block: 'start' })
+      first.current = false
+      return
+    }
+    window.scrollTo({ top: 0, behavior: 'instant' })
+    if (first.current) {
+      first.current = false
+      return
+    }
+    document.querySelector<HTMLElement>('main h1')?.focus({ preventScroll: true })
+  }, [path, anchor])
 }
 
 export function App() {
   const { ui } = useI18n()
-  useDocumentMeta()
-  useInitialHashScroll()
+  const { path, anchor } = useLocation()
+  useDocumentMeta(path)
+  useRouteEffects(path, anchor)
+
+  const Page = PAGES[path]
 
   return (
     <>
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-60 focus:rounded focus:bg-signal focus:px-4 focus:py-2 focus:font-medium focus:text-signal-ink"
+        onClick={(event) => {
+          // A plain #main would be read by the router as an unknown route.
+          event.preventDefault()
+          document.querySelector<HTMLElement>('main h1')?.focus()
+        }}
+        className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-60 focus:rounded focus:bg-water focus:px-4 focus:py-2 focus:font-semibold focus:text-white"
       >
         {ui('skip_to_content')}
       </a>
 
-      <StatusBar />
+      <Header />
 
       <main id="main">
-        <Hero />
-        <Stats />
-        <CaseStudies />
-        <Experience />
-        <ProjectIndex />
-        <Competences />
-        <Skills />
-        <Education />
-        <About />
-        <Contact />
+        <Page />
       </main>
 
       <Footer />
 
-      {/* Tells Google this is a person, with the profile links it should trust. */}
+      {/* Tells search engines this is a person, and which profiles to trust. */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
