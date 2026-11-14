@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Maison Sève · démo</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 fill=%22%235B0E16%22/%3E%3Ctext x=%2216%22 y=%2224%22 font-family=%22Georgia%22 font-size=%2222%22 fill=%22white%22 text-anchor=%22middle%22%3ES%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<a class="skip" href="#collection">Aller à la collection</a>
+<header class="hdr" id="hdr">
+  <a class="mark" href="#top">Maison Sève</a>
+  <nav aria-label="Navigation principale">
+    <a href="#collection">Collection</a>
+    <a href="#defile">Défilé</a>
+    <a href="#atelier">Atelier</a>
+  </nav>
+  <button class="bag-btn" id="bagBtn" aria-haspopup="dialog">Panier <span id="bagCount">0</span></button>
+</header>
+
+<main id="top">
+  <section class="hero" aria-label="Rouge Sève, printemps–été 2027">
+    <div class="hero-txt">
+      <p class="season">Printemps–Été 2027</p>
+      <h1 class="title"><span class="ln"><span>Rouge</span></span><span class="ln"><span><em>Sève</em></span></span></h1>
+      <p class="lede">Douze silhouettes taillées à Paris, dans un seul rouge qui va du grenat au coquelicot.</p>
+      <a class="cta" href="#collection">Voir la collection</a>
+    </div>
+    <figure class="hero-img"><img src="img/hero.jpg" alt="Mannequin en robe rouge longue, fendue, sur fond clair" fetchpriority="high"></figure>
+  </section>
+
+  <section class="collection" id="collection" aria-labelledby="colTitle">
+    <div class="pin" id="pin">
+      <div class="col-head">
+        <h2 id="colTitle">La collection</h2>
+        <p><span id="progress">01</span> / 12 · faites défiler</p>
+      </div>
+      <ol class="track" id="track"></ol>
+    </div>
+  </section>
+
+  <section class="defile" id="defile" aria-labelledby="defTitle">
+    <div class="def-grid">
+      <div>
+        <p class="kicker">Paris Fashion Week</p>
+        <h2 id="defTitle" class="def-date">02.03.27</h2>
+        <p class="def-place">20 h · Salle des Fêtes, Paris 3e</p>
+        <dl class="countdown" id="countdown" aria-label="Temps avant le défilé"></dl>
+        <p class="def-coul">Organisateurs : le plan de salle et l'ordre de passage se gèrent dans <a href="../backstage/">l'outil des coulisses</a>.</p>
+      </div>
+      <form class="invite" id="invite" novalidate>
+        <h3>Demander une invitation</h3>
+        <label>Nom et prénom<input name="name" autocomplete="name" required></label>
+        <label>E-mail<input name="email" type="email" autocomplete="email" required></label>
+        <fieldset><legend>Vous venez en tant que</legend>
+          <div class="seg" id="role">
+            <label><input type="radio" name="role" value="Presse" checked><span>Presse</span></label>
+            <label><input type="radio" name="role" value="Acheteur"><span>Acheteur</span></label>
+            <label><input type="radio" name="role" value="Client"><span>Client</span></label>
+          </div>
+        </fieldset>
+        <p class="ferr" id="ferr" role="alert"></p>
+        <button class="btn-light" type="submit">Envoyer la demande</button>
+        <p class="fine">Démo : la demande n'est envoyée nulle part.</p>
+      </form>
+    </div>
+    <figure class="def-img"><img src="img/public.jpg" alt="Le public assis dans la pénombre avant un défilé" loading="lazy"></figure>
+  </section>
+
+  <section class="atelier" id="atelier" aria-labelledby="atTitle">
+    <figure class="at-img"><img src="img/atelier.jpg" alt="Vêtements en laine et en lin sur un portant d'atelier" loading="lazy"></figure>
+    <div class="at-txt">
+      <h2 id="atTitle">L'atelier</h2>
+      <p>Chaque pièce est coupée et cousue rue de Charonne, par quatre personnes. Nous produisons en petites séries : quand une taille est épuisée, elle revient quelques semaines plus tard.</p>
+      <p>Laine vierge d'Italie, lin de Normandie, soie lavée. Retouches offertes pendant un an.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="ftr">
+  <p class="mark">Maison Sève</p>
+  <p>Marque, produits et défilé inventés pour une démonstration. Photographies : Unsplash.</p>
+</footer>
+
+<!-- product sheet -->
+<div class="sheet" id="product" role="dialog" aria-modal="true" aria-labelledby="pName" hidden>
+  <div class="scrim" data-close></div>
+  <article class="panel prod">
+    <button class="x" data-close aria-label="Fermer">×</button>
+    <figure class="prod-img"><img id="pImg" alt=""></figure>
+    <div class="prod-txt">
+      <p class="kicker" id="pLook"></p>
+      <h2 id="pName"></h2>
+      <p class="price" id="pPrice"></p>
+      <p class="pdesc" id="pDesc"></p>
+      <fieldset><legend>Taille</legend><div class="sizes" id="pSizes"></div></fieldset>
+      <p class="ferr" id="sizeErr" role="alert"></p>
+      <button class="btn-dark" id="addBtn">Ajouter au panier</button>
+      <details class="guide"><summary>Guide des tailles</summary>
+        <table><thead><tr><th>Taille</th><th>Poitrine</th><th>Taille</th><th>Hanches</th></tr></thead>
+        <tbody><tr><td>XS</td><td>80</td><td>62</td><td>88</td></tr><tr><td>S</td><td>84</td><td>66</td><td>92</td></tr><tr><td>M</td><td>88</td><td>70</td><td>96</td></tr><tr><td>L</td><td>94</td><td>76</td><td>102</td></tr><tr><td>XL</td><td>100</td><td>82</td><td>108</td></tr></tbody></table>
+        <p class="fine">Mesures en centimètres.</p>
+      </details>
+    </div>
+  </article>
+</div>
+
+<!-- bag -->
+<div class="sheet" id="bag" role="dialog" aria-modal="true" aria-labelledby="bagTitle" hidden>
+  <div class="scrim" data-close></div>
+  <aside class="panel bagp">
+    <button class="x" data-close aria-label="Fermer">×</button>
+    <h2 id="bagTitle">Panier</h2>
+    <ul class="items" id="items"></ul>
+    <div class="bag-foot" id="bagFoot"></div>
+  </aside>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+<script src="site.js"></script>
+</body>
+</html>

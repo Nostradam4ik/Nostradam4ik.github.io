@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Coulisses · démo</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%227%22 fill=%22%23560D15%22/%3E%3Crect x=%2214%22 y=%224%22 width=%224%22 height=%2224%22 fill=%22white%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;1,6..96,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="brand"><span class="bmark">Coulisses</span><span class="bshow">Maison Sève · défilé du 2 mars 2027</span></div>
+    <nav class="tabs" role="tablist" aria-label="Sections">
+      <button role="tab" data-tab="salle" aria-selected="true">Plan de salle</button>
+      <button role="tab" data-tab="defile" aria-selected="false">Ordre de passage</button>
+      <button role="tab" data-tab="invites" aria-selected="false">Invités</button>
+    </nav>
+    <p class="flag">Démo · données fictives</p>
+  </header>
+
+  <!-- SALLE -->
+  <main class="view" id="v-salle">
+    <aside class="palette" aria-label="Éléments à placer">
+      <h2>Ajouter</h2>
+      <p class="hint">Glissez un élément sur le plan, ou cliquez pour le poser au centre.</p>
+      <div class="pal" id="pal"></div>
+      <h2 class="mt">Remplir les rangs</h2>
+      <div class="fill">
+        <label for="rows">Rangs de chaque côté <output id="rowsOut">3</output></label>
+        <input type="range" id="rows" min="0" max="4" value="3">
+        <div class="seg" role="group" aria-label="Type d'assise">
+          <button data-seat="chair" aria-pressed="true">Chaises</button>
+          <button data-seat="bench" aria-pressed="false">Bancs</button>
+        </div>
+        <label class="chk"><input type="checkbox" id="aisle" checked> Allée centrale</label>
+        <button class="btn primary" id="fillBtn">Remplir automatiquement</button>
+      </div>
+    </aside>
+
+    <section class="stage" aria-label="Plan de la salle">
+      <div class="stage-head">
+        <div>
+          <h1>Salle des Fêtes</h1>
+          <p class="sub">32 × 20 m · un carreau = 1 m</p>
+        </div>
+        <div class="sel-tools" id="selTools" hidden>
+          <span id="selName"></span>
+          <button class="btn ghost small" data-op="rot" title="Pivoter (R)">Pivoter</button>
+          <button class="btn ghost small" data-op="dup" title="Dupliquer (D)">Dupliquer</button>
+          <button class="btn danger small" data-op="del" title="Supprimer (Suppr)">Supprimer</button>
+        </div>
+      </div>
+      <div class="plan-box">
+        <svg id="plan" viewBox="0 0 1020 660" aria-label="Plan de la salle"></svg>
+      </div>
+    </section>
+
+    <aside class="stats" aria-label="Capacité">
+      <h2>Capacité</h2>
+      <div class="big"><b id="sSeats">0</b><span>places assises</span></div>
+      <dl class="kv">
+        <dt>Places debout</dt><dd id="sStand">0</dd>
+        <dt>Équipe et presse photo</dt><dd>24</dd>
+        <dt>Total dans la salle</dt><dd id="sTotal">0</dd>
+      </dl>
+      <label class="jauge" for="limit">Jauge autorisée <input type="number" id="limit" value="320" min="50" max="2000" step="10"></label>
+      <div class="meter" aria-hidden="true"><i id="meterBar"></i></div>
+      <p class="meter-txt" id="meterTxt"></p>
+      <h2 class="mt">Contrôles</h2>
+      <ul class="checks" id="checks"></ul>
+      <p class="fine">Calcul indicatif. La jauge réelle d'un lieu recevant du public est fixée par sa commission de sécurité.</p>
+    </aside>
+  </main>
+
+  <!-- DÉFILÉ -->
+  <main class="view" id="v-defile" hidden>
+    <section class="runorder">
+      <div class="ro-head">
+        <div>
+          <h1>Ordre de passage</h1>
+          <p class="sub" id="readyLine"></p>
+        </div>
+        <div class="ctrls">
+          <button class="btn primary" id="showBtn">Lancer le défilé</button>
+          <button class="btn ghost" id="resetShow">Remettre à zéro</button>
+        </div>
+      </div>
+      <ol class="looks" id="looks"></ol>
+    </section>
+    <section class="live" aria-live="polite">
+      <div class="live-card" id="live"></div>
+    </section>
+  </main>
+
+  <!-- INVITÉS -->
+  <main class="view" id="v-invites" hidden>
+    <section class="guests">
+      <div class="g-head">
+        <div>
+          <h1>Invités</h1>
+          <p class="sub" id="gLine"></p>
+        </div>
+        <div class="g-tools">
+          <label class="search"><input id="gSearch" type="search" placeholder="Rechercher un invité" aria-label="Rechercher un invité"></label>
+          <div class="seg" role="group" aria-label="Filtrer" id="gFilter">
+            <button data-f="all" aria-pressed="true">Tous</button>
+            <button data-f="in" aria-pressed="false">Arrivés</button>
+            <button data-f="out" aria-pressed="false">Attendus</button>
+          </div>
+          <button class="btn primary" id="placeBtn">Placer les invités</button>
+        </div>
+      </div>
+      <table class="gt">
+        <thead><tr><th>Invité</th><th>Catégorie</th><th>Place</th><th class="r">Arrivée</th></tr></thead>
+        <tbody id="gRows"></tbody>
+      </table>
+    </section>
+  </main>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script src="app.js"></script>
+</body>
+</html>

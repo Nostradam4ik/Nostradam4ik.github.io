@@ -1,6 +1,6 @@
 import { useI18n } from '@/lib/i18n'
-import { maquettes } from '@/data/maquettes'
-import type { Maquette } from '@/data/maquettes'
+import { apps, maquettes } from '@/data/maquettes'
+import type { AppDemo as AppData, Maquette } from '@/data/maquettes'
 
 function Card({ m }: { m: Maquette }) {
   const { lang, ui } = useI18n()
@@ -40,6 +40,52 @@ function Card({ m }: { m: Maquette }) {
   )
 }
 
+/** A clickable app: a looping film above, the live demo one click away. */
+function AppDemo({ a }: { a: AppData }) {
+  const { lang, ui } = useI18n()
+  const c = a[lang]
+  const reducedMotion =
+    typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+  return (
+    <article className="mt-20 border-t border-line pt-12 md:mt-24">
+      <video
+        controls
+        muted
+        loop
+        playsInline
+        autoPlay={!reducedMotion}
+        preload={reducedMotion ? 'none' : 'metadata'}
+        poster={a.image}
+        aria-label={c.alt}
+        className="block aspect-video w-full rounded-xl border border-line bg-ink object-cover shadow-sm"
+      >
+        <source src={a.video} type="video/mp4" />
+      </video>
+
+      <div className="mt-8 grid gap-6 md:grid-cols-[minmax(0,18rem)_1fr] md:gap-10">
+        <div>
+          <h3 className="text-4xl leading-none font-extrabold">{a.name}</h3>
+          <p className="ui mt-2 text-base font-semibold text-muted">{c.kind}</p>
+          <p className="ui mt-6 text-lg font-semibold">
+            <a href={a.demoUrl} target="_blank" rel="noreferrer noopener" className="link">
+              {ui('app_open')}
+              <span className="sr-only"> ({ui('open_external_aria')})</span>
+            </a>
+          </p>
+        </div>
+        <ul className="list-disc space-y-2 pl-5 marker:text-water">
+          {c.points.map((p) => (
+            <li key={p} className="pl-1">
+              {p}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </article>
+  )
+}
+
 /** Two concept mock-ups, each with a short film and a live page. */
 export function Maquettes() {
   const { ui } = useI18n()
@@ -60,6 +106,11 @@ export function Maquettes() {
       </div>
 
       <p className="mt-10 text-base text-muted">{ui('maquettes_note')}</p>
+
+      {apps.map((a) => (
+        <AppDemo key={a.slug} a={a} />
+      ))}
+      <p className="mt-10 text-base text-muted">{ui('app_note')}</p>
     </section>
   )
 }

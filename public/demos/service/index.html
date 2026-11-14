@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Couvert · démo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%231F5640%22/%3E%3Ccircle cx=%2216%22 cy=%2216%22 r=%229%22 fill=%22none%22 stroke=%22white%22 stroke-width=%222.4%22/%3E%3C/svg%3E">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div class="app" id="app">
+  <header class="top">
+    <div class="brand">
+      <span class="logo" aria-hidden="true"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M10 9v7a3 3 0 0 0 3 3v5M13 9v6M16 9v7a3 3 0 0 1-3 3M21 9c-2 2-2.4 6 0 8v7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+      <div>
+        <p class="product">Couvert</p>
+        <p class="venue">Chez Lison · Paris 13e</p>
+      </div>
+    </div>
+    <nav class="tabs" role="tablist" aria-label="Sections">
+      <button role="tab" aria-selected="true" data-tab="service">Service</button>
+      <button role="tab" aria-selected="false" data-tab="avis">Avis <span class="badge" id="reviewBadge"></span></button>
+      <button role="tab" aria-selected="false" data-tab="clients">Clients</button>
+    </nav>
+    <div class="top-right">
+      <p class="demo-flag" title="Le restaurant, les clients et les avis sont inventés">Démo · données fictives</p>
+      <button class="btn primary" id="newResBtn"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>Réservation</button>
+    </div>
+  </header>
+
+  <!-- SERVICE -->
+  <main class="view" id="view-service">
+    <section class="list" aria-label="Réservations du soir">
+      <div class="list-head">
+        <div>
+          <h1>Ce soir</h1>
+          <p class="sub" id="dateLine"></p>
+        </div>
+        <div class="kpis" id="kpis"></div>
+      </div>
+      <div class="filters" role="group" aria-label="Filtrer">
+        <button class="chip on" data-f="all">Toutes</button>
+        <button class="chip" data-f="soon">À venir</button>
+        <button class="chip" data-f="seated">À table</button>
+        <button class="chip" data-f="late">En retard</button>
+      </div>
+      <ol class="res-list" id="resList"></ol>
+    </section>
+
+    <section class="floor" aria-label="Plan de salle">
+      <div class="floor-head">
+        <div class="clock"><span id="clockTime">20:15</span><span class="clock-label" id="clockLabel">maintenant</span></div>
+        <ul class="legend" aria-label="Légende">
+          <li><i class="sw free"></i>Libre</li>
+          <li><i class="sw reserved"></i>Réservée</li>
+          <li><i class="sw seated"></i>À table</li>
+          <li><i class="sw bill"></i>Addition</li>
+          <li><i class="sw late"></i>Retard</li>
+        </ul>
+      </div>
+      <div class="plan-wrap">
+        <svg id="plan" viewBox="16 18 788 526" role="group" aria-label="Plan de la salle, cliquez sur une table"></svg>
+      </div>
+      <div class="timeline">
+        <button class="play" id="playBtn" aria-label="Rejouer le service"><svg viewBox="0 0 20 20" aria-hidden="true"><path id="playIcon" d="M6 4l10 6-10 6z" fill="currentColor"/></svg></button>
+        <div class="scrub">
+          <svg id="occ" viewBox="0 0 660 44" preserveAspectRatio="none" aria-hidden="true"></svg>
+          <input type="range" id="scrub" min="0" max="330" step="5" value="135" aria-label="Heure affichée sur le plan">
+          <div class="ticks"><span>18h</span><span>19h</span><span>20h</span><span>21h</span><span>22h</span><span>23h</span></div>
+        </div>
+        <button class="btn ghost small" id="nowBtn">Maintenant</button>
+      </div>
+    </section>
+
+    <aside class="inspector" id="inspector" aria-live="polite"></aside>
+  </main>
+
+  <!-- AVIS -->
+  <main class="view" id="view-avis" hidden>
+    <section class="reviews">
+      <div class="list-head">
+        <div>
+          <h1>Avis Google</h1>
+          <p class="sub">Note moyenne <strong id="avgStars"></strong> sur les 30 derniers jours</p>
+        </div>
+      </div>
+      <ol class="rev-list" id="revList"></ol>
+    </section>
+    <section class="rev-detail" id="revDetail"></section>
+  </main>
+
+  <!-- CLIENTS -->
+  <main class="view" id="view-clients" hidden>
+    <section class="clients">
+      <div class="list-head">
+        <div>
+          <h1>Clients</h1>
+          <p class="sub" id="clientCount"></p>
+        </div>
+        <label class="search"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="5.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13 13l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input id="clientSearch" type="search" placeholder="Nom, téléphone, préférence…" aria-label="Rechercher un client"></label>
+      </div>
+      <table class="ctable">
+        <thead><tr><th>Nom</th><th>Visites</th><th>Dernière visite</th><th>Préférences</th><th class="num">Panier moyen</th></tr></thead>
+        <tbody id="clientRows"></tbody>
+      </table>
+    </section>
+  </main>
+</div>
+
+<dialog id="resDialog" aria-labelledby="dlgTitle">
+  <form method="dialog" id="resForm" novalidate>
+    <h2 id="dlgTitle">Nouvelle réservation</h2>
+    <div class="grid2">
+      <label>Nom<input name="name" required autocomplete="off" placeholder="Ex. Martin"></label>
+      <label>Téléphone<input name="phone" inputmode="tel" autocomplete="off" placeholder="06 12 34 56 78"></label>
+    </div>
+    <fieldset class="covers"><legend>Couverts</legend><div id="coverPick"></div></fieldset>
+    <fieldset class="slots"><legend>Heure</legend><div id="slotPick"></div></fieldset>
+    <label>Note<input name="note" autocomplete="off" placeholder="Allergie, anniversaire, chaise bébé…"></label>
+    <div class="suggest" id="suggest"></div>
+    <p class="err" id="formErr" role="alert"></p>
+    <div class="dlg-actions">
+      <button type="button" class="btn ghost" id="cancelRes">Annuler</button>
+      <button type="submit" class="btn primary" id="confirmRes">Confirmer la réservation</button>
+    </div>
+  </form>
+</dialog>
+
+<div class="toast" id="toast" role="status"></div>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
