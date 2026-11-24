@@ -70,3 +70,14 @@ public/
   request.
 - The degree certificate is published as a PDF with the date and place of birth blacked out.
 - Projects with private code say so instead of linking to a repository that does not exist.
+
+## License
+
+The source code is released under the [MIT license](LICENSE).
+
+The license covers the code only. It does **not** cover:
+
+- my personal content: the portrait, the CV, the certificates and the degree certificate in `public/`, the texts, and
+  the films in `public/media/`, all of which stay under my copyright;
+- the photographs in `public/demos/`, which come from Unsplash and remain under the
+  [Unsplash license](https://unsplash.com/license).
