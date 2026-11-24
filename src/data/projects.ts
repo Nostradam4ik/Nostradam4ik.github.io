@@ -338,7 +338,6 @@ export const projects: Project[] = [
     name: 'SmartSpend',
     category: 'mobile',
     status: 'personal',
-    repoUrl: 'https://github.com/Nostradam4ik/MobApp',
     stack: ['Flutter', 'Dart', 'Supabase', 'PostgreSQL', 'SQLite', 'Google ML Kit'],
     fr: {
       tagline: 'Suivi de dépenses Flutter : assistant NLP embarqué, OCR de tickets, 10 langues',
@@ -347,7 +346,7 @@ export const projects: Project[] = [
       highlights: [
         "L'assistant conversationnel tourne entièrement sur l'appareil : moteur NLP et base de connaissances écrits en Dart, donc aucun appel réseau, aucun coût d'API et aucune donnée financière transmise à un tiers. C'est un moteur à base de règles, pas un LLM, et c'était le bon choix ici.",
         "Chiffrement AES-256-GCM avec vecteur d'initialisation aléatoire à chaque message et clé rangée dans le stockage sécurisé du système, complété par l'authentification biométrique.",
-        "Interface traduite en 10 langues, 161 fichiers Dart et 51 fichiers de tests dans le dépôt.",
+        "Interface traduite en 10 langues, 161 fichiers Dart et 51 fichiers de tests dans le code.",
       ],
       metrics: [
         { label: "Langues de l'interface", value: '10' },
@@ -355,7 +354,7 @@ export const projects: Project[] = [
         { label: 'Écrans', value: '49' },
       ],
       provenance:
-        "Projet personnel. Monétisation intégrée techniquement, jamais publiée sur un store.",
+        "Projet personnel. Monétisation intégrée techniquement, jamais publiée sur un store. Code privé, accessible sur demande.",
     },
     en: {
       tagline: 'Flutter expense tracker: on-device NLP assistant, receipt OCR, 10 languages',
@@ -364,14 +363,14 @@ export const projects: Project[] = [
       highlights: [
         'The conversational assistant runs entirely on device: the NLP engine and knowledge base are written in Dart, so there is no network call, no API cost and no financial data leaving the phone. It is a rules engine, not an LLM, and that was the right call here.',
         'AES-256-GCM encryption with a fresh initialisation vector per message and the key held in system secure storage, alongside biometric authentication.',
-        'Interface translated into 10 languages, 161 Dart files and 51 test files in the repository.',
+        'Interface translated into 10 languages, 161 Dart files and 51 test files in the code.',
       ],
       metrics: [
         { label: 'Interface languages', value: '10' },
         { label: 'Test files', value: '51' },
         { label: 'Screens', value: '49' },
       ],
-      provenance: 'Personal project. Monetisation wired up technically, never shipped to a store.',
+      provenance: 'Personal project. Monetisation wired up technically, never shipped to a store. Private code, available on request.',
     },
   },
 ]
