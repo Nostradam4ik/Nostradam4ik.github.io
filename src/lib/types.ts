@@ -54,6 +54,7 @@ export interface EducationEntry {
   period: string
   degree: { fr: string; en: string }
   detail?: { fr: string; en: string }
+  pdfUrl?: string
 }
 
 export interface Certification {

@@ -154,9 +154,15 @@ export const education: EducationEntry[] = [
     school: 'UPEC — Créteil',
     period: '2023 — 2026',
     degree: {
-      fr: 'BUT Informatique (Bac+3)',
-      en: "Bachelor's degree in Computer Science (BUT)",
+      fr: 'Licence professionnelle BUT Informatique (Bac+3), diplômé',
+      en: "Bachelor's degree in Computer Science (BUT), graduated",
     },
+    detail: {
+      fr: "Parcours Réalisation d'applications : conception, développement, validation. Diplôme délivré le 3 novembre 2026.",
+      en: 'Application development track: design, development, validation. Degree awarded on 3 November 2026.',
+    },
+    // The scan is published with the date and place of birth blacked out.
+    pdfUrl: '/cv/Diplome-BUT-Informatique-2026.pdf',
   },
   {
     id: 'bac-sti2d',

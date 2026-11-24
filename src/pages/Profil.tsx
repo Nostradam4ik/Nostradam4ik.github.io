@@ -34,6 +34,14 @@ export function Profil() {
                   <p className="text-base text-muted">
                     {e.school}, {e.period}
                   </p>
+                  {e.detail ? <p className="mt-1 text-base text-muted">{pick(e.detail)}</p> : null}
+                  {e.pdfUrl ? (
+                    <p className="ui mt-1 text-base font-semibold">
+                      <a href={e.pdfUrl} target="_blank" rel="noreferrer" className="link">
+                        {ui('diploma_pdf')}
+                      </a>
+                    </p>
+                  ) : null}
                 </li>
               ))}
             </ul>
