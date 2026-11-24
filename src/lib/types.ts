@@ -33,6 +33,8 @@ export interface Project {
   stack: string[]
   repoUrl?: string
   liveUrl?: string
+  /** A short scripted film of the running product; the case study then spans the full row. */
+  film?: { video: string; poster: string; alt: { fr: string; en: string } }
   fr: ProjectCopy
   en: ProjectCopy
 }

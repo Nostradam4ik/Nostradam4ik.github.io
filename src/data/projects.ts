@@ -118,6 +118,73 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: 'drone-watch',
+    name: 'Drone Watch',
+    category: 'ml',
+    status: 'personal',
+    featured: true,
+    repoUrl: 'https://github.com/Nostradam4ik/drone-watch',
+    stack: [
+      'Python',
+      'FastAPI',
+      'NumPy / SciPy',
+      'MQTT (TLS)',
+      'WebSocket',
+      'MapLibre',
+      'Qdrant',
+      'Mistral AI',
+      'Docker',
+    ],
+    film: {
+      video: '/media/film-drone-watch.mp4',
+      poster: '/media/film-drone-watch.jpg',
+      alt: {
+        fr: "Film de 34 secondes : le tableau de bord sur une carte 3D de Paris, des pistes de drones fusionnées à partir de trois capteurs, le dossier d'une cible, le parc de capteurs, puis les alertes",
+        en: 'A 34-second film: the dashboard on a 3D map of Paris, drone tracks fused from three sensors, a target dossier, the sensor fleet, then the alerts',
+      },
+    },
+    fr: {
+      tagline:
+        'Détection de drones multi-capteurs : un tracker de fusion, un service temps réel et un tableau de bord sur carte 3D',
+      problem:
+        "Un radar, un détecteur radiofréquence et un capteur acoustique ne voient pas la même chose : l'un mesure une distance, les deux autres seulement une direction. Le projet fusionne ces mesures en une piste par drone, la place par rapport aux zones à protéger et prévient l'opérateur sans le noyer sous les fausses alertes.",
+      highlights: [
+        "Le cœur est un tracker de fusion écrit et testé de bout en bout : filtres de Kalman étendus avec modèles de mouvement multiples (IMM), association par distance de Mahalanobis et algorithme hongrois, triangulation à partir des seuls relèvements.",
+        "Un service FastAPI avec tableau de bord en temps réel, courtier MQTT sécurisé (TLS et droits par capteur), authentification, journal d'audit, rejeu des incidents, et un nœud de secours qui reprend la main en six secondes au plus.",
+        "Une carte 3D hors ligne : le fichier de carte est servi par l'application elle-même, si bien qu'aucun serveur tiers ne voit quelle zone l'opérateur surveille, et que rien ne casse sans Internet.",
+        "Mesuré, pas supposé : avec 300 détections aléatoires par capteur, un scan pouvait durer jusqu'à 27 secondes ; après l'optimisation du gating (jacobien analytique, calculs groupés) et des plafonds explicites, il tient en 0,03 seconde environ.",
+      ],
+      metrics: [
+        { label: 'Tests automatisés, ruff et mypy propres', value: '616' },
+        { label: 'Types de capteurs fusionnés', value: '3' },
+        { label: 'Scan sous 300 détections aléatoires par capteur', value: '27 s → 0,03 s' },
+        { label: 'Bascule sur le nœud de secours', value: '≤ 6 s' },
+      ],
+      provenance:
+        "Projet personnel, code public. Toutes les mesures viennent d'un simulateur de capteurs : l'outil d'évaluation (OSPA, RMSE, fausses pistes) est prêt pour des enregistrements réels, mais le dépôt n'en contient aucun, et je ne présente donc pas de précision sur du matériel réel. Les noms de drones du film sont des profils de simulation.",
+    },
+    en: {
+      tagline:
+        'Multi-sensor drone detection: a fusion tracker, a real-time service and a dashboard on a 3D map',
+      problem:
+        "A radar, a radio-frequency detector and an acoustic sensor do not see the same thing: one measures a range, the other two only a bearing. The project fuses those measurements into one track per drone, places it against the zones to protect and alerts the operator without drowning them in false alarms.",
+      highlights: [
+        'The core is a fusion tracker written and tested end to end: extended Kalman filters with interacting multiple models (IMM), Mahalanobis-distance association with the Hungarian algorithm, and triangulation from bearings alone.',
+        'A FastAPI service with a real-time dashboard, a secured MQTT broker (TLS and per-sensor permissions), authentication, an audit log, incident replay, and a standby node that takes over within six seconds at most.',
+        'An offline 3D map: the map file is served by the application itself, so no third-party server sees which area the operator is watching, and nothing breaks without Internet.',
+        'Measured, not assumed: with 300 random detections per sensor a scan could take up to 27 seconds; after optimising the gating (analytic Jacobian, batched computations) and adding explicit ceilings, it takes about 0.03 seconds.',
+      ],
+      metrics: [
+        { label: 'Automated tests, ruff and mypy clean', value: '616' },
+        { label: 'Sensor types fused', value: '3' },
+        { label: 'Scan under 300 random detections per sensor', value: '27 s → 0.03 s' },
+        { label: 'Failover to the standby node', value: '≤ 6 s' },
+      ],
+      provenance:
+        'Personal project, public code. Every measurement comes from a sensor simulator: the evaluation tool (OSPA, RMSE, false tracks) is ready for real recordings, but the repository holds none, so I do not claim accuracy on real hardware. The drone names in the film are simulation profiles.',
+    },
+  },
+  {
     slug: 'iam-gateway',
     name: 'IAM Gateway',
     category: 'infra',
