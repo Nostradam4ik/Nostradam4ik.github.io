@@ -245,6 +245,7 @@ export const projects: Project[] = [
         "Quatre services FastAPI indépendants — authentification, ingestion, analyse, IA — partagent PostgreSQL et Redis, orchestrés avec Celery et Nginx dans un compose de 10 conteneurs.",
         "195 tests automatisés vérifiés dans le dépôt : 160 fonctions pytest réparties sur les quatre services et 35 tests Vitest côté interface.",
         "Le module d'analyse est écrit sans aucune dépendance : régression par moindres carrés, z-score, bornes IQR, prédiction de vélocité — le tout couvert par 58 tests unitaires incluant les cas dégénérés.",
+        "Intégration continue verte au 24 novembre 2026 : les quatre suites de tests du back end, les tests Vitest, la vérification TypeScript, ESLint et la construction de l'image Docker. Dépendances remises à jour le même jour (FastAPI 0.165, Pydantic 2.14, SQLAlchemy 2.1, Next.js 16, React 19), et les tests ont révélé plusieurs vrais défauts, corrigés au passage.",
       ],
       metrics: [
         { label: 'Microservices', value: '4' },
@@ -262,6 +263,7 @@ export const projects: Project[] = [
         'Four independent FastAPI services — auth, ingestion, analytics, AI — share PostgreSQL and Redis, orchestrated with Celery and Nginx in a 10-container compose file.',
         '195 automated tests verified in the repository: 160 pytest functions across the four services and 35 Vitest tests on the front end.',
         'The analytics module is written with zero dependencies: least-squares regression, z-scores, IQR bounds, velocity prediction — all covered by 58 unit tests including degenerate cases.',
+        'Continuous integration green as of 24 November 2026: the four back-end test suites, the Vitest tests, the TypeScript check, ESLint and the Docker image build. Dependencies brought up to date the same day (FastAPI 0.165, Pydantic 2.14, SQLAlchemy 2.1, Next.js 16, React 19), and the tests exposed several real defects, fixed along the way.',
       ],
       metrics: [
         { label: 'Microservices', value: '4' },
@@ -373,6 +375,7 @@ export const projects: Project[] = [
         "40 variables construites à la main : encodage cyclique de l'heure, du jour et du mois, indicateurs météo aux deux aéroports, taux de retard historiques par compagnie et par créneau.",
         "Une seule source de vérité pour la liste des variables, partagée entre l'entraînement et le service d'inférence — la cause la plus fréquente de dérive train/serve est éliminée à la racine.",
         "Chaque prédiction est accompagnée de son explication SHAP, et les variables indisponibles deux heures avant le vol sont exclues du jeu d'entraînement par construction.",
+        "Pipeline CI vert de bout en bout au 24 novembre 2026 : formatage (black, isort), flake8, 18 tests, construction de l'image Docker et tests d'intégration de l'API. Il a fallu corriger une régression réelle : pandas 3 a supprimé la fréquence horaire « H ».",
       ],
       metrics: [
         { label: 'Variables en entrée du modèle', value: '40' },
@@ -390,6 +393,7 @@ export const projects: Project[] = [
         '40 hand-built features: cyclical encoding of hour, day and month, weather severity indicators at both airports, historical delay rates by carrier and by slot.',
         'One single source of truth for the feature list, shared between training and the inference service — the most common cause of train/serve skew is removed at the root.',
         'Every prediction ships with its SHAP explanation, and features unavailable two hours before departure are excluded from the training set by construction.',
+        'CI pipeline green end to end as of 24 November 2026: formatting (black, isort), flake8, 18 tests, Docker image build and API integration tests. A real regression had to be fixed: pandas 3 removed the hourly frequency alias "H".',
       ],
       metrics: [
         { label: 'Model input features', value: '40' },
