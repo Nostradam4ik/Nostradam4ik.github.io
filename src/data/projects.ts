@@ -69,52 +69,49 @@ export const projects: Project[] = [
     liveUrl: 'https://aireviewresponder.dev',
     stack: [
       'FastAPI',
-      'React',
+      'Next.js / React',
       'PostgreSQL',
       'Stripe',
-      'Google Business Profile API',
-      'Groq — llama-3.3-70b',
+      'Mistral AI',
       'Nginx / Hetzner',
       'Docker',
     ],
     fr: {
       tagline:
-        "SaaS B2B en production : l'IA rédige et publie les réponses aux avis Google, en 6 langues",
+        "SaaS B2B en production : l'IA rédige les réponses aux avis Google, dans la langue du client",
       problem:
-        "Un commerçant perd une demi-heure par jour à répondre à ses avis Google, et ne pas répondre fait baisser sa note comme sa visibilité locale. Le produit connecte la fiche Google Business Profile, génère une réponse dans la langue de l'avis et la publie, après validation ou automatiquement.",
+        "Un commerçant perd une demi-heure par jour à répondre à ses avis Google, et ne pas répondre fait baisser sa note comme sa visibilité locale. Le commerçant colle un avis, le produit rédige en quelques secondes une réponse dans sa langue et au ton de la maison, puis il la relit et la publie sur Google. La synchronisation directe avec Google Business Profile (import des avis et publication) n'est pas encore ouverte : le code d'intégration existe, mais l'accès à l'API doit être accordé par Google.",
       highlights: [
         "Facturation pilotée par l'état serveur : trois formules Stripe, essai de 14 jours sans carte, checkout, portail client et statut d'abonnement qui fait autorité côté back-end plutôt que dans l'interface.",
         "Client HTTP durci, visible dans le bundle public : rafraîchissement de jeton « single-flight » sur cookie httpOnly avec garde anti-boucle, rejeu de la requête après 401, lecture de Retry-After sur 429.",
-        "Internationalisation réelle et vérifiable : 728 clés traduites par langue, exactement à parité sur les six locales, cyrillique compris.",
+        "Internationalisation réelle et vérifiable : 876 clés traduites par langue, exactement à parité sur les six locales, cyrillique compris.",
         "Auto-hébergé et administré par moi : Nginx et FastAPI sur un serveur Hetzner en Allemagne, CSP à nonce par requête, HSTS, documentation d'API coupée en production.",
       ],
       metrics: [
         { label: "Langues de l'interface", value: '6' },
-        { label: 'Clés traduites par langue', value: '728' },
-        { label: 'Routes API consommées par le front', value: '43' },
+        { label: 'Clés traduites par langue', value: '876' },
         { label: 'Formules Stripe en ligne', value: '3' },
       ],
       provenance:
-        'Produit personnel en ligne, code fermé. Les chiffres ci-dessus sont relevés sur la surface publique en production.',
+        'Produit personnel en ligne, code fermé. Les chiffres ci-dessus sont relevés dans le code et sur le produit en ligne.',
     },
     en: {
-      tagline: 'Live B2B SaaS: AI drafts and publishes Google review replies in six languages',
+      tagline: 'Live B2B SaaS: AI drafts replies to Google reviews in the customer’s language',
       problem:
-        'A local business loses half an hour a day answering Google reviews, and not answering drags down both the rating and local visibility. The product connects the Google Business Profile listing, generates a reply in the language of the review and publishes it, either after approval or automatically.',
+        'A local business loses half an hour a day answering Google reviews, and not answering drags down both the rating and local visibility. The owner pastes a review, the product drafts a reply in its language and in the house tone within seconds, and the owner proofreads and posts it on Google. Direct sync with Google Business Profile (importing reviews and publishing) is not open yet: the integration code exists, but Google still has to grant API access.',
       highlights: [
         'Billing driven by server state: three Stripe plans, a 14-day trial with no card, checkout, customer portal, and a subscription status that is authoritative on the back end rather than in the UI.',
         'Hardened HTTP client, visible in the public bundle: single-flight token refresh over an httpOnly cookie with a loop guard, request replay after a 401, and Retry-After handling on a 429.',
-        'Real, checkable internationalisation: 728 translated keys per language, at exact parity across all six locales, Cyrillic included.',
+        'Real, checkable internationalisation: 876 translated keys per language, at exact parity across all six locales, Cyrillic included.',
         'Self-hosted and administered by me: Nginx and FastAPI on a Hetzner server in Germany, per-request nonce CSP, HSTS, API docs disabled in production.',
       ],
       metrics: [
         { label: 'Interface languages', value: '6' },
-        { label: 'Translated keys per language', value: '728' },
-        { label: 'API routes consumed by the front end', value: '43' },
+        { label: 'Translated keys per language', value: '876' },
         { label: 'Live Stripe plans', value: '3' },
       ],
       provenance:
-        'Personal product, live, closed source. The figures above are read off the public production surface.',
+        'Personal product, live, closed source. The figures above are read from the code and from the live product.',
     },
   },
   {
