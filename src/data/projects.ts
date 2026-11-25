@@ -287,12 +287,13 @@ export const projects: Project[] = [
         "Sur un flux de transactions par carte où moins de 0,2 % sont frauduleuses, tout l'enjeu est d'arbitrer entre attraper la fraude et noyer les analystes sous les faux positifs. L'accuracy n'y veut rien dire : un modèle qui répond toujours « non » atteint déjà 99,8 %.",
       highlights: [
         "Pipeline d'entraînement propre : découpage stratifié, normalisation ajustée sur le seul jeu d'entraînement et SMOTE appliqué après le découpage — donc sans fuite de données vers l'évaluation.",
-        "Un workflow de sécurité planifié à 7 jobs : ZAP, Semgrep, Trivy, CodeQL et détection de secrets, en plus du pipeline CI à 4 jobs. C'est la partie dont je suis le plus satisfait.",
+        "Un workflow de sécurité à 7 jobs, lancé à chaque push et chaque semaine : ZAP (analyse de base et complète), Bandit, Safety, Gitleaks et Trivy, en plus du pipeline CI à 9 jobs dont les étapes de déploiement ne font qu'afficher un message. C'est la partie dont je suis le plus satisfait.",
         "Sécurité applicative réellement implémentée et pas seulement listée : JWT avec rotation du refresh token, 2FA TOTP, RBAC à trois rôles, limitation de débit et journal d'audit.",
+        "Intégration continue verte au 25 novembre 2026 : les 44 tests pytest rejoués sur SQLite puis sur PostgreSQL, le build du front, les contrôles de qualité, les analyses de sécurité et le build des images Docker. La couverture mesurée est de 35 % : le seuil est réglé à 30 % pour ne pas régresser, l'ancien objectif de 70 % n'ayant jamais été atteint.",
       ],
       metrics: [
         { label: 'Tests pytest', value: '44' },
-        { label: 'Jobs CI et sécurité', value: '11' },
+        { label: 'Jobs CI et sécurité', value: '16' },
         { label: "Modules de routes d'API", value: '18' },
         { label: 'Modules Terraform', value: '8' },
       ],
@@ -305,12 +306,13 @@ export const projects: Project[] = [
         'On a card transaction stream where under 0.2% are fraudulent, the whole problem is trading off catching fraud against drowning analysts in false positives. Accuracy is meaningless here: a model that always answers "no" already scores 99.8%.',
       highlights: [
         'A clean training pipeline: stratified split, scaler fitted on the training set only, and SMOTE applied after the split — so no leakage into evaluation.',
-        'A scheduled 7-job security workflow: ZAP, Semgrep, Trivy, CodeQL and secret detection, on top of the 4-job CI pipeline. This is the part I am happiest with.',
+        'A 7-job security workflow, run on every push and every week: ZAP (baseline and full scan), Bandit, Safety, Gitleaks and Trivy, on top of the 9-job CI pipeline whose deployment steps only print a message. This is the part I am happiest with.',
         'Application security actually implemented rather than merely listed: JWT with refresh-token rotation, TOTP 2FA, three-role RBAC, rate limiting and an audit log.',
+        'Continuous integration green as of 25 November 2026: the 44 pytest tests replayed on SQLite then on PostgreSQL, the front-end build, quality checks, security scans and the Docker image build. Measured coverage is 35%: the gate is set to 30% so it cannot regress, since the former 70% target was never met.',
       ],
       metrics: [
         { label: 'pytest tests', value: '44' },
-        { label: 'CI and security jobs', value: '11' },
+        { label: 'CI and security jobs', value: '16' },
         { label: 'API route modules', value: '18' },
         { label: 'Terraform modules', value: '8' },
       ],
