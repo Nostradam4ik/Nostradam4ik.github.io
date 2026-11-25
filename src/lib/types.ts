@@ -10,6 +10,8 @@ export interface ProjectMetric {
 /** Localised half of a project card. */
 export interface ProjectCopy {
   tagline: string
+  /** One dated line on the state of the project's CI, shown in the project index. */
+  ci?: string
   problem: string
   highlights: string[]
   metrics: ProjectMetric[]

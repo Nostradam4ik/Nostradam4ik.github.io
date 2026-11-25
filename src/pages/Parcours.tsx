@@ -60,6 +60,7 @@ export function Parcours() {
                     </span>
                   </p>
                   <p className="mt-1 text-body">{c.tagline}</p>
+                  {c.ci ? <p className="mt-1 text-base text-muted">{c.ci}</p> : null}
                   {project.repoUrl ? (
                     <a
                       href={project.repoUrl}

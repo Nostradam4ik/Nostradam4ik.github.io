@@ -239,6 +239,7 @@ export const projects: Project[] = [
     stack: ['Python', 'FastAPI', 'Next.js', 'PostgreSQL', 'Celery / Redis', 'Docker', 'CI/CD'],
     fr: {
       tagline: "Analytics d'équipe de développement : 4 microservices, 195 tests automatisés",
+      ci: 'CI verte au 25 nov. 2026 : 195 tests, build du front et image Docker.',
       problem:
         "Pour savoir si la vélocité d'une équipe baisse, où s'accumule le temps de cycle des pull requests ou qui porte seul la charge de revue, il faut croiser les données GitHub à la main. DevMetrics les ingère en continu et les restitue en tendances, anomalies et rapports exportables.",
       highlights: [
@@ -257,6 +258,7 @@ export const projects: Project[] = [
     },
     en: {
       tagline: 'Dev-team analytics: 4 microservices, 195 automated tests',
+      ci: 'CI green as of 25 Nov 2026: 195 tests, front-end build and Docker image.',
       problem:
         'Working out whether a team’s velocity is dropping, where pull-request cycle time accumulates, or who is carrying review load alone, means cross-referencing GitHub data by hand. DevMetrics ingests it continuously and returns trends, anomalies and exportable reports.',
       highlights: [
@@ -283,6 +285,7 @@ export const projects: Project[] = [
     stack: ['FastAPI', 'scikit-learn', 'React', 'Terraform', 'Docker', 'PostgreSQL'],
     fr: {
       tagline: 'Détection de fraude bancaire : API de scoring, PWA React, chaîne de sécurité CI',
+      ci: 'CI verte au 25 nov. 2026 : 44 tests sur SQLite et PostgreSQL, sécurité, images Docker. Couverture : 35 %.',
       problem:
         "Sur un flux de transactions par carte où moins de 0,2 % sont frauduleuses, tout l'enjeu est d'arbitrer entre attraper la fraude et noyer les analystes sous les faux positifs. L'accuracy n'y veut rien dire : un modèle qui répond toujours « non » atteint déjà 99,8 %.",
       highlights: [
@@ -302,6 +305,7 @@ export const projects: Project[] = [
     },
     en: {
       tagline: 'Card fraud detection: scoring API, React PWA, security scanning in CI',
+      ci: 'CI green as of 25 Nov 2026: 44 tests on SQLite and PostgreSQL, security scans, Docker images. Coverage: 35%.',
       problem:
         'On a card transaction stream where under 0.2% are fraudulent, the whole problem is trading off catching fraud against drowning analysts in false positives. Accuracy is meaningless here: a model that always answers "no" already scores 99.8%.',
       highlights: [
@@ -329,37 +333,43 @@ export const projects: Project[] = [
     stack: ['Python', 'FastAPI', 'Pydantic', 'React Native / Expo', 'TypeScript', 'Docker'],
     fr: {
       tagline: 'Analyse de dommages sur photo : un contrat JSON, trois fournisseurs interchangeables',
+      ci: 'CI verte au 25 nov. 2026 : 46 tests, types du front et image Docker.',
       problem:
         "Faire décrire des dégâts par un modèle de vision est facile ; obtenir une réponse exploitable par un programme ne l'est pas. Le projet transforme une à trois photos en un objet JSON stable que le mobile peut afficher sans jamais deviner.",
       highlights: [
         "Un seul schéma Pydantic sert de contrat entre la réponse du modèle et la réponse HTTP, et le frontend le reflète dans ses types — une divergence de champ casse la compilation TypeScript avant d'atteindre l'utilisateur.",
         "Trois fournisseurs derrière une seule variable d'environnement : Groq réutilise le client compatible OpenAI, Anthropic passe par un forçage d'outil pour obtenir un JSON valide.",
         "Le drapeau « il me faut plus de photos » renvoyé par le modèle est systématiquement écrasé par la comparaison au seuil de confiance : la règle métier fait autorité, pas l'avis du modèle.",
+        "Intégration continue verte au 25 novembre 2026, ajoutée après coup : lint, 46 tests exécutés sans réseau ni clé d'API (les fournisseurs sont remplacés par des doublures), vérification des types du frontend et construction de l'image Docker. Ces tests ont révélé que les erreurs de validation renvoyaient un format différent du contrat annoncé, et qu'une installation propre du frontend échouait : les deux sont corrigés.",
       ],
       metrics: [
         { label: 'Fournisseurs LLM interchangeables', value: '3' },
         { label: 'Champs du contrat JSON validés', value: '8' },
         { label: 'Seuil de confiance appliqué côté serveur', value: '0,65' },
+        { label: 'Tests automatisés du back end', value: '46' },
       ],
       provenance:
-        "Exercice technique d'entretien réalisé en deux jours. Aucun test automatisé, ni authentification, ni persistance — le README le dit, et je ne le présente pas autrement.",
+        "Exercice technique d'entretien réalisé en deux jours. Les tests et l'intégration continue ont été ajoutés ensuite ; il n'y a toujours ni authentification, ni persistance, ni test de bout en bout contre un vrai modèle — le README le dit, et je ne le présente pas autrement.",
     },
     en: {
       tagline: 'Photo damage analysis: one JSON contract, three swappable providers',
+      ci: 'CI green as of 25 Nov 2026: 46 tests, front-end types and Docker image.',
       problem:
         'Getting a vision model to describe damage is easy; getting an answer a program can act on is not. The project turns one to three photos into a stable JSON object the mobile app can render without ever guessing.',
       highlights: [
         'A single Pydantic schema is the contract between the model output and the HTTP response, mirrored in the front-end types — a field mismatch breaks the TypeScript build before it can reach a user.',
         'Three providers behind one environment variable: Groq reuses the OpenAI-compatible client, Anthropic goes through forced tool use to guarantee valid JSON.',
         'The model’s own "I need more photos" flag is always overridden by the confidence-threshold comparison: the business rule is authoritative, not the model’s opinion.',
+        'Continuous integration green as of 25 November 2026, added after the fact: lint, 46 tests that run with no network and no API key (the providers are replaced by fakes), a front-end type check and the Docker image build. Those tests showed that validation errors came back in a different shape than the documented contract, and that a clean front-end install failed: both are fixed.',
       ],
       metrics: [
         { label: 'Swappable LLM providers', value: '3' },
         { label: 'Validated JSON contract fields', value: '8' },
         { label: 'Server-side confidence threshold', value: '0.65' },
+        { label: 'Back-end automated tests', value: '46' },
       ],
       provenance:
-        'Interview take-home built in two days. No automated tests, no auth, no persistence — the README says so, and I do not present it otherwise.',
+        'Interview take-home built in two days. The tests and continuous integration were added afterwards; there is still no auth, no persistence and no end-to-end test against a real model — the README says so, and I do not present it otherwise.',
     },
   },
   {
@@ -371,6 +381,7 @@ export const projects: Project[] = [
     stack: ['FastAPI', 'XGBoost', 'SHAP', 'scikit-learn', 'React', 'Docker'],
     fr: {
       tagline: 'Pipeline ML de prédiction de retards aériens, classification puis régression',
+      ci: "CI verte au 25 nov. 2026 : lint, 18 tests, image Docker et tests d'intégration.",
       problem:
         "Deux heures avant le départ, ni le passager ni l'opérateur ne savent si un vol partira en retard ni de combien. Le pipeline répond aux deux questions à partir des seules informations réellement disponibles à cet instant.",
       highlights: [
@@ -389,6 +400,7 @@ export const projects: Project[] = [
     },
     en: {
       tagline: 'A flight-delay ML pipeline: staged classifier, then regressor',
+      ci: 'CI green as of 25 Nov 2026: lint, 18 tests, Docker image and integration tests.',
       problem:
         'Two hours before departure, neither the passenger nor the operator knows whether a flight will be late, or by how much. The pipeline answers both questions using only what is genuinely available at that moment.',
       highlights: [
