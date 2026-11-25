@@ -13,7 +13,7 @@ what it is (professional work, university project, personal product) and what it
 | Page | Content |
 |---|---|
 | **Home** | Who I am, availability, and the four pages. |
-| **Work** (`/travaux`) | Full case studies: Leakia, AI Review Responder and Drone Watch (with a 34-second film), then three restaurant site mock-ups and three clickable demo apps, each with a scripted film. |
+| **Work** (`/travaux`) | Full case studies: Leakia, AI Review Responder and Drone Watch (with a 34-second film), then a gallery of five interface demos (three clickable apps, two phone-first pages), each with a film. |
 | **Experience** (`/parcours`) | Internships and missions, and the index of the other projects with links to their code. |
 | **BUT framework** (`/referentiel`) | The competency self-assessment for my BUT Informatique, with the evidence and the limits. |
 | **Profile** (`/profil`) | Education (degree certificate with the date of birth blacked out), languages, certificates, skills. |

@@ -42,9 +42,9 @@ const fr: SiteCopy = {
   },
   pages: {
     travaux: {
-      title: 'Deux travaux en détail',
+      title: 'Trois travaux en détail',
       intro:
-        "Un agent IA livré en entreprise et un SaaS que je fais tourner. Pour chacun : le problème, ce que j'ai construit, et ce qui se vérifie.",
+        "Un agent IA livré en entreprise, un SaaS que je fais tourner et un système de détection de drones. Pour chacun : le problème, ce que j'ai construit, et ce qui se vérifie.",
     },
     parcours: {
       title: 'Parcours',
@@ -165,15 +165,12 @@ const fr: SiteCopy = {
     diag_choose: 'Choisissez une réponse',
     code_of_site: 'Code de ce site',
     updated: 'Mis à jour le',
-    maquettes_heading: 'Maquettes et applications de démonstration',
+    maquettes_heading: 'Interfaces et motion',
     maquettes_intro:
-      "Deux restaurants inventés, pour montrer ce que je propose à un commerce de quartier : un site lisible sur téléphone, qui présente la carte, les horaires et la réservation. Chaque film dure dix-huit secondes ; la page vivante s'ouvre à côté.",
+      'Cinq démonstrations d’interface : trois applications cliquables et deux pages pensées pour le téléphone, chacune avec son film. Sans framework ni bibliothèque d’animation.',
     maquettes_note:
-      'Restaurants fictifs : les noms, adresses, numéros et prix sont inventés. Photographies : Unsplash.',
-    maquette_open: 'Ouvrir la page vivante',
-    maquette_video_aria: 'film de dix-huit secondes présentant la maquette',
-    app_open: "Ouvrir l'application",
-    app_note: 'Restaurants, marque, clients, invités et avis inventés. Tout fonctionne dans le navigateur, sans serveur ni compte. Photographies : Unsplash.',
+      'Démonstrations à données fictives : établissements, marque, adresses, prix, invités et avis sont inventés. Photographies : Unsplash.',
+    demo_open: 'Ouvrir la démo',
   },
   footer:
     'Site conçu, écrit et développé par Andrii Zhmuryk — React, TypeScript, Tailwind CSS, Vite. Aucune mesure d’audience, aucun cookie, aucun script tiers.',
@@ -221,9 +218,9 @@ const en: SiteCopy = {
   },
   pages: {
     travaux: {
-      title: 'Two pieces of work in detail',
+      title: 'Three pieces of work in detail',
       intro:
-        'An AI agent shipped at a company, and a SaaS I run myself. For each: the problem, what I built, and what can be checked.',
+        'An AI agent shipped at a company, a SaaS I run myself and a drone detection system. For each: the problem, what I built, and what can be checked.',
     },
     parcours: {
       title: 'Experience',
@@ -344,15 +341,12 @@ const en: SiteCopy = {
     diag_choose: 'Pick an answer',
     code_of_site: 'Code of this site',
     updated: 'Updated on',
-    maquettes_heading: 'Mock-ups and demo apps',
+    maquettes_heading: 'Interfaces and motion',
     maquettes_intro:
-      'Two invented restaurants, to show what I offer a neighbourhood business: a site that reads well on a phone and presents the menu, the hours and booking. Each film lasts eighteen seconds; the live page opens alongside.',
+      'Five interface demos: three clickable apps and two phone-first pages, each with its own film. No framework and no animation library.',
     maquettes_note:
-      'Fictional restaurants: names, addresses, phone numbers and prices are made up. Photography: Unsplash.',
-    maquette_open: 'Open the live page',
-    maquette_video_aria: 'eighteen-second film presenting the mock-up',
-    app_open: 'Open the app',
-    app_note: 'Invented restaurants, label, guests and reviews. Everything runs in the browser, with no server and no account. Photography: Unsplash.',
+      'Demos with invented data: businesses, label, addresses, prices, guests and reviews are fictitious. Photography: Unsplash.',
+    demo_open: 'Open the demo',
   },
   footer:
     'Designed, written and built by Andrii Zhmuryk — React, TypeScript, Tailwind CSS, Vite. No analytics, no cookies, no third-party scripts.',

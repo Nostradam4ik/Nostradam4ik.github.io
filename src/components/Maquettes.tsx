@@ -1,116 +1,86 @@
 import { useI18n } from '@/lib/i18n'
-import { apps, maquettes } from '@/data/maquettes'
-import type { AppDemo as AppData, Maquette } from '@/data/maquettes'
+import { apps, reels } from '@/data/maquettes'
+import type { Demo } from '@/data/maquettes'
 
-function Card({ m }: { m: Maquette }) {
+function DemoText({ demo }: { demo: Demo }) {
   const { lang, ui } = useI18n()
-  const c = m[lang]
+  const c = demo[lang]
 
   return (
-    <article className="grid gap-6 sm:grid-cols-[minmax(0,15rem)_1fr] sm:gap-8">
-      <video
-        controls
-        playsInline
-        preload="none"
-        poster={m.poster}
-        aria-label={`${m.name} : ${ui('maquette_video_aria')}`}
-        className="aspect-[9/16] w-full max-w-[15rem] rounded-lg bg-ink object-cover"
-      >
-        <source src={m.video} type="video/mp4" />
-      </video>
-
-      <div>
-        <h3 className="text-4xl leading-none font-extrabold">{m.name}</h3>
-        <p className="ui mt-2 text-base font-semibold text-muted">{c.kind}</p>
-        <ul className="mt-5 list-disc space-y-2 pl-5 marker:text-water">
-          {c.points.map((p) => (
-            <li key={p} className="pl-1">
-              {p}
-            </li>
-          ))}
-        </ul>
-        <p className="ui mt-6 text-lg font-semibold">
-          <a href={m.demoUrl} target="_blank" rel="noreferrer noopener" className="link">
-            {ui('maquette_open')}
-            <span className="sr-only"> ({ui('open_external_aria')})</span>
-          </a>
-        </p>
-      </div>
-    </article>
+    <>
+      <h3 className="text-2xl leading-tight font-extrabold">{demo.name}</h3>
+      <p className="ui mt-1 text-sm font-semibold text-muted">{c.kind}</p>
+      <p className="mt-3 text-base leading-7">{c.tech}</p>
+      <p className="ui mt-3 text-base font-semibold">
+        <a href={demo.demoUrl} target="_blank" rel="noreferrer noopener" className="link">
+          {ui('demo_open')}
+          <span className="sr-only">
+            {' '}
+            : {demo.name} ({ui('open_external_aria')})
+          </span>
+        </a>
+      </p>
+    </>
   )
 }
 
-/** A clickable app: a looping film above, the live demo one click away. */
-function AppDemo({ a }: { a: AppData }) {
-  const { lang, ui } = useI18n()
-  const c = a[lang]
-  const reducedMotion =
-    typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+function Film({ demo, className }: { demo: Demo; className: string }) {
+  const { lang } = useI18n()
 
   return (
-    <article className="mt-20 border-t border-line pt-12 md:mt-24">
-      <video
-        controls
-        muted
-        loop
-        playsInline
-        autoPlay={!reducedMotion}
-        preload={reducedMotion ? 'none' : 'metadata'}
-        poster={a.image}
-        aria-label={c.alt}
-        className="block aspect-video w-full rounded-xl border border-line bg-ink object-cover shadow-sm"
-      >
-        <source src={a.video} type="video/mp4" />
-      </video>
-
-      <div className="mt-8 grid gap-6 md:grid-cols-[minmax(0,18rem)_1fr] md:gap-10">
-        <div>
-          <h3 className="text-4xl leading-none font-extrabold">{a.name}</h3>
-          <p className="ui mt-2 text-base font-semibold text-muted">{c.kind}</p>
-          <p className="ui mt-6 text-lg font-semibold">
-            <a href={a.demoUrl} target="_blank" rel="noreferrer noopener" className="link">
-              {ui('app_open')}
-              <span className="sr-only"> ({ui('open_external_aria')})</span>
-            </a>
-          </p>
-        </div>
-        <ul className="list-disc space-y-2 pl-5 marker:text-water">
-          {c.points.map((p) => (
-            <li key={p} className="pl-1">
-              {p}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </article>
+    <video
+      controls
+      muted
+      playsInline
+      preload="none"
+      poster={demo.poster}
+      aria-label={demo[lang].alt}
+      className={`block rounded-lg border border-line bg-ink object-cover ${className}`}
+    >
+      <source src={demo.video} type="video/mp4" />
+    </video>
   )
 }
 
-/** Two concept mock-ups, each with a short film and a live page. */
+/**
+ * A quiet gallery after the case studies: nothing plays until asked, and each
+ * card says what was built rather than selling it.
+ */
 export function Maquettes() {
   const { ui } = useI18n()
 
   return (
     <section aria-labelledby="maquettes-title" className="wrap mt-24 md:mt-32">
-      <div className="border-t-2 border-ink pt-8">
-        <h2 id="maquettes-title" className="text-4xl leading-tight font-extrabold md:text-5xl">
+      <div className="border-t-2 border-ink pt-6">
+        <h2 id="maquettes-title" className="text-3xl leading-tight font-extrabold md:text-4xl">
           {ui('maquettes_heading')}
         </h2>
-        <p className="measure mt-4 text-xl leading-8 text-body">{ui('maquettes_intro')}</p>
+        <p className="measure mt-3">{ui('maquettes_intro')}</p>
       </div>
 
-      <div className="mt-12 grid gap-16 lg:grid-cols-2 lg:gap-14">
-        {maquettes.map((m) => (
-          <Card key={m.slug} m={m} />
+      <ul className="mt-10 grid gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+        {apps.map((demo) => (
+          <li key={demo.slug}>
+            <Film demo={demo} className="aspect-video w-full" />
+            <div className="mt-4">
+              <DemoText demo={demo} />
+            </div>
+          </li>
         ))}
-      </div>
+      </ul>
+
+      <ul className="mt-14 grid gap-x-12 gap-y-10 border-t border-line pt-10 md:grid-cols-2">
+        {reels.map((demo) => (
+          <li key={demo.slug} className="flex items-start gap-5">
+            <Film demo={demo} className="aspect-[9/16] w-32 shrink-0 sm:w-40" />
+            <div className="min-w-0">
+              <DemoText demo={demo} />
+            </div>
+          </li>
+        ))}
+      </ul>
 
       <p className="mt-10 text-base text-muted">{ui('maquettes_note')}</p>
-
-      {apps.map((a) => (
-        <AppDemo key={a.slug} a={a} />
-      ))}
-      <p className="mt-10 text-base text-muted">{ui('app_note')}</p>
     </section>
   )
 }
