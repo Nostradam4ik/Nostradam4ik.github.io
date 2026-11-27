@@ -182,6 +182,61 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: 'miniinfer',
+    name: 'MiniInfer',
+    category: 'ml',
+    status: 'personal',
+    featured: true,
+    repoUrl: 'https://github.com/Nostradam4ik/miniinfer',
+    stack: ['C++17', 'CUDA', 'WMMA', 'CUDA Graphs', 'Nsight Systems', 'PyTorch', 'CMake'],
+    film: {
+      video: '/media/film-miniinfer.mp4',
+      poster: '/media/film-miniinfer.jpg',
+      alt: {
+        fr: "Rejeu d'une exécution dans un terminal : le modèle continue un début d'histoire. Ce n'est pas une capture d'écran et l'attente du démarrage est raccourcie ; à partir du premier texte généré, le rythme est celui de l'enregistrement",
+        en: 'A replay of one run in a terminal: the model continues the start of a story. It is not a screen capture and the startup wait is shortened; from the first generated text on, the timing is as recorded',
+      },
+    },
+    fr: {
+      tagline: "Un moteur d'inférence LLM écrit en C++/CUDA, avec ses propres kernels",
+      problem:
+        "Faire tourner un modèle de langage avec une bibliothèque cache l'essentiel : où part le temps à chaque token. Ce projet d'apprentissage exécute SmolLM2-135M sur GPU avec des kernels écrits pour lui, sans cuDNN et sans PyTorch à l'exécution.",
+      highlights: [
+        'Les kernels du Transformer : multiplication de matrices, attention avec cache KV, RoPE, RMSNorm, couche MLP et versions fusionnées pour le décodage ; poids en fp16 ou bf16.',
+        "Décodage 7,7 fois plus rapide que ma propre version de départ (de 17,0 à 2,2 ms par token, RTX 4060 Laptop), après profilage : pool mémoire, kernel matrice-vecteur, fusion de kernels, poids 16 bits et CUDA Graphs.",
+        'Pour le prefill, un bloc d’attention par tête KV : 512 tokens passent de 55,5 à 42,4 ms, avec des logits identiques bit à bit. Un mode optionnel sur les tensor cores est plus rapide mais moins exact.',
+        "La limite est mesurée et publiée : à 512 tokens, le prefill de llama.cpp en BF16 reste 2,1 fois plus rapide que mon mode par défaut. En décodage avec CUDA Graph, MiniInfer est devant sur ce petit modèle, ce qui ne montre pas que c'est un meilleur moteur.",
+      ],
+      metrics: [
+        { label: 'Décodage, par rapport à ma version de départ', value: '7,7×' },
+        { label: 'Tokens par seconde au décodage (RTX 4060 Laptop)', value: '455' },
+        { label: 'Tests, dont des comparaisons avec PyTorch', value: '170' },
+        { label: 'Couches du modèle exécutées', value: '30' },
+      ],
+      provenance:
+        "Projet personnel d'apprentissage, code public, développé en partie avec une assistance IA (Claude Code). Mesures faites sur un seul GPU de portable et un seul petit modèle ; la CI n'a pas de GPU, les tests GPU sont lancés en local. Le chiffre de 455 tokens par seconde est la médiane de bench_decode ; le film montre une autre exécution, isolée.",
+    },
+    en: {
+      tagline: 'An LLM inference engine written in C++/CUDA, with its own kernels',
+      problem:
+        'Running a language model through a library hides the main thing: where the time goes for each token. This learning project runs SmolLM2-135M on a GPU with kernels written for it, with no cuDNN and no PyTorch at runtime.',
+      highlights: [
+        'The Transformer kernels: matrix multiplication, attention with a KV cache, RoPE, RMSNorm, the MLP layer and fused versions for decoding; fp16 or bf16 weights.',
+        'Decoding is 7.7 times faster than my own starting version (17.0 to 2.2 ms per token, RTX 4060 Laptop) after profiling: a memory pool, a matrix-vector kernel, kernel fusion, 16-bit weights and CUDA Graphs.',
+        'For prefill, one attention block per KV head: 512 tokens went from 55.5 to 42.4 ms with bitwise identical logits. An optional tensor core mode is faster but less exact.',
+        'The limit is measured and published: at 512 tokens, llama.cpp BF16 prefill is still 2.1 times faster than my default mode. In decoding with a CUDA Graph MiniInfer is ahead on this small model, which does not show that it is a better engine.',
+      ],
+      metrics: [
+        { label: 'Decode speed against my starting version', value: '7.7×' },
+        { label: 'Decode tokens per second (RTX 4060 Laptop)', value: '455' },
+        { label: 'Tests, including comparisons with PyTorch', value: '170' },
+        { label: 'Model layers executed', value: '30' },
+      ],
+      provenance:
+        'Personal learning project, public code, developed partly with AI assistance (Claude Code). Measured on a single laptop GPU with a single small model; CI has no GPU, so the GPU tests are run locally. The 455 tokens per second figure is a bench_decode median; the film shows a different, single run.',
+    },
+  },
+  {
     slug: 'iam-gateway',
     name: 'IAM Gateway',
     category: 'infra',

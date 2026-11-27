@@ -42,9 +42,9 @@ const fr: SiteCopy = {
   },
   pages: {
     travaux: {
-      title: 'Trois travaux en détail',
+      title: 'Quatre travaux en détail',
       intro:
-        "Un agent IA livré en entreprise, un SaaS que je fais tourner et un système de détection de drones. Pour chacun : le problème, ce que j'ai construit, et ce qui se vérifie.",
+        "Un agent IA livré en entreprise, un SaaS que je fais tourner, un système de détection de drones et un moteur d'inférence LLM. Pour chacun : le problème, ce que j'ai construit, et ce qui se vérifie.",
     },
     parcours: {
       title: 'Parcours',
@@ -218,9 +218,9 @@ const en: SiteCopy = {
   },
   pages: {
     travaux: {
-      title: 'Three pieces of work in detail',
+      title: 'Four pieces of work in detail',
       intro:
-        'An AI agent shipped at a company, a SaaS I run myself and a drone detection system. For each: the problem, what I built, and what can be checked.',
+        'An AI agent shipped at a company, a SaaS I run myself, a drone detection system and an LLM inference engine. For each: the problem, what I built, and what can be checked.',
     },
     parcours: {
       title: 'Experience',
