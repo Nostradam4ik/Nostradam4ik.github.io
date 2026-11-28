@@ -160,10 +160,7 @@ export const education: EducationEntry[] = [
     detail: {
       fr: "Parcours Réalisation d'applications : conception, développement, validation. Diplôme délivré le 3 novembre 2026.",
       en: 'Application development track: design, development, validation. Degree awarded on 3 November 2026.',
-    },
-    // The scan is published with the date and place of birth blacked out.
-    pdfUrl: '/cv/Diplome-BUT-Informatique-2026.pdf',
-  },
+    },  },
   {
     id: 'bac-sti2d',
     school: 'Lycée A. Chérioux',
